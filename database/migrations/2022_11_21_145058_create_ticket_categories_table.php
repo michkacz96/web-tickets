@@ -17,7 +17,7 @@ class CreateTicketCategoriesTable extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name', 64);
-            $table->string('description', 512);
+            $table->string('description', 512)->nullable();
             $table->softDeletes();
         });
     }
