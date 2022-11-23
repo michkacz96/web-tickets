@@ -15,7 +15,11 @@ class TicketCategoryController extends Controller
      */
     public function index()
     {
-        return view('ticketCategories.index');
+        $data = array(
+            'ticketCategories' => TicketCategory::all(),
+            'NO_DATA_MSG' => 'No data yet.'
+        );
+        return view('ticketCategories.index')->with($data);
     }
 
     /**
