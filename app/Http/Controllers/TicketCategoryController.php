@@ -15,7 +15,7 @@ class TicketCategoryController extends Controller
      */
     public function index()
     {
-        //
+        return view('ticketCategories.index');
     }
 
     /**
