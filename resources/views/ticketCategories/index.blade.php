@@ -1,1 +1,5 @@
-CATEGORIES OF RICKETS
+@extends('layouts.app')
+
+@section('content')
+    
+@endsection
