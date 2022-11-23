@@ -15,7 +15,10 @@
                     <tr>
                         <td>{{$ticketCategory->name}}</td>
                         <td>{{$ticketCategory->description}}</td>
-                        <td></td>
+                        <td>
+                            <a href={{url('/ticket-categories/'.$ticketCategory->id.'/edit')}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">Edit</a>
+                            <a href={{url('/ticket-categories/'.$ticketCategory->id)}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">Show</a>
+                        </td>
                     </tr>
                 @endforeach
               </tbody>
