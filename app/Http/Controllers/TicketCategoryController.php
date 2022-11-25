@@ -14,9 +14,9 @@ class TicketCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($lg)
     {
-        $lg = "pl_pl";
+        //$lg = "pl_pl";
         $text_data = array(
             'BTN_EDIT' => ContentLanguage::getText("BTN_EDIT", $lg),
             'BTN_SHOW' => ContentLanguage::getText("BTN_SHOW", $lg),
@@ -29,6 +29,7 @@ class TicketCategoryController extends Controller
 
         $data = array(
             'ticketCategories' => TicketCategory::all(),
+            'language' => $lg,
             'texts' => $text_data  
         );
         return view('ticketCategories.index')->with($data);

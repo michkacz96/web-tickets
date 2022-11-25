@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('ticket-categories', App\Http\Controllers\TicketCategoryController::class);
+Route::resource('{language}/ticket-categories', App\Http\Controllers\TicketCategoryController::class);
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
