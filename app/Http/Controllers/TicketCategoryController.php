@@ -84,9 +84,21 @@ class TicketCategoryController extends Controller
      * @param  \App\Models\TicketCategory  $ticketCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(TicketCategory $ticketCategory)
+    public function edit($lg, TicketCategory $ticketCategory)
     {
-        //
+        $text_data = array(
+            'TEXT_NAME' => ContentLanguage::getText("TEXT_NAME", $lg),
+            'TEXT_DESCRIPTION' => ContentLanguage::getText("TEXT_DESCRIPTION", $lg),
+            'BTN_GO_BACK' => ContentLanguage::getText("BTN_GO_BACK", $lg),
+            'BTN_EDIT' => ContentLanguage::getText("BTN_EDIT", $lg)
+        );
+
+        $data = array(
+            'language' => $lg,
+            'texts' => $text_data,
+            'ticketCategory' => $ticketCategory
+        );
+        return view('ticketCategories.edit')->with($data);
     }
 
     /**
