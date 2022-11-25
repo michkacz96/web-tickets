@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="{{url($language.'/ticket-categories/create')}}" class="btn btn-primary btn-block">{{$texts['CREATE_NEW_BUTTON_TICKET_CATEGORY']}}</a>
+    <div class="d-flex justify-content-start">
+        <a href="{{url($language.'/ticket-categories/create')}}" class="btn btn-primary btn-block">{{$texts['BTN_CREATE_CATEGORY']}}</a>
+    </div>
+    
     <hr class="my-3">
     @if(count((is_countable($ticketCategories)?$ticketCategories:[])))
         <table class="table table-hover">

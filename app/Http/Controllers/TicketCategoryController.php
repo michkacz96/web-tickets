@@ -24,7 +24,7 @@ class TicketCategoryController extends Controller
             'TABLE_COL_NAME' => ContentLanguage::getText("TABLE_COL_NAME", $lg),
             'TABLE_COL_DESCRIPTION' => ContentLanguage::getText("TABLE_COL_DESCRIPTION", $lg),
             'NO_DATA_MSG' => ContentLanguage::getText("NO_DATA_MSG", $lg),
-            'CREATE_NEW_BUTTON_TICKET_CATEGORY' => ContentLanguage::getText("CREATE_NEW_BUTTON_TICKET_CATEGORY", $lg)
+            'BTN_CREATE_CATEGORY' => ContentLanguage::getText("BTN_CREATE_CATEGORY", $lg)
         );
 
         $data = array(
@@ -40,9 +40,20 @@ class TicketCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($lg)
     {
-        //
+        $text_data = array(
+            'TABLE_COL_NAME' => ContentLanguage::getText("TABLE_COL_NAME", $lg),
+            'TABLE_COL_DESCRIPTION' => ContentLanguage::getText("TABLE_COL_DESCRIPTION", $lg),
+            'BTN_GO_BACK' => ContentLanguage::getText("BTN_GO_BACK", $lg),
+            'BTN_CREATE_CATEGORY' => ContentLanguage::getText("BTN_CREATE_CATEGORY", $lg)
+        );
+
+        $data = array(
+            'language' => $lg,
+            'texts' => $text_data  
+        );
+        return view('ticketCategories.create')->with($data);
     }
 
     /**
