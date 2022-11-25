@@ -21,8 +21,8 @@ class TicketCategoryController extends Controller
             'BTN_EDIT' => ContentLanguage::getText("BTN_EDIT", $lg),
             'BTN_SHOW' => ContentLanguage::getText("BTN_SHOW", $lg),
             'BTN_DELETE' => ContentLanguage::getText("BTN_DELETE", $lg),
-            'TABLE_COL_NAME' => ContentLanguage::getText("TABLE_COL_NAME", $lg),
-            'TABLE_COL_DESCRIPTION' => ContentLanguage::getText("TABLE_COL_DESCRIPTION", $lg),
+            'TEXT_NAME' => ContentLanguage::getText("TEXT_NAME", $lg),
+            'TEXT_DESCRIPTION' => ContentLanguage::getText("TEXT_DESCRIPTION", $lg),
             'NO_DATA_MSG' => ContentLanguage::getText("NO_DATA_MSG", $lg),
             'BTN_CREATE_CATEGORY' => ContentLanguage::getText("BTN_CREATE_CATEGORY", $lg)
         );
@@ -43,8 +43,8 @@ class TicketCategoryController extends Controller
     public function create($lg)
     {
         $text_data = array(
-            'TABLE_COL_NAME' => ContentLanguage::getText("TABLE_COL_NAME", $lg),
-            'TABLE_COL_DESCRIPTION' => ContentLanguage::getText("TABLE_COL_DESCRIPTION", $lg),
+            'TEXT_NAME' => ContentLanguage::getText("TEXT_NAME", $lg),
+            'TEXT_DESCRIPTION' => ContentLanguage::getText("TEXT_DESCRIPTION", $lg),
             'BTN_GO_BACK' => ContentLanguage::getText("BTN_GO_BACK", $lg),
             'BTN_CREATE_CATEGORY' => ContentLanguage::getText("BTN_CREATE_CATEGORY", $lg)
         );

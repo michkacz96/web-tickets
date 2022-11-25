@@ -10,8 +10,8 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                  <th scope="col">{{$texts['TABLE_COL_NAME']}}</th>
-                  <th scope="col">{{$texts['TABLE_COL_DESCRIPTION']}}</th>
+                  <th scope="col">{{$texts['TEXT_NAME']}}</th>
+                  <th scope="col">{{$texts['TEXT_DESCRIPTION']}}</th>
                   <th scope="col"></th>
                 </tr>
               </thead>

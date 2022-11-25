@@ -7,12 +7,12 @@
     
     {!! Form::open(['url' => url($language.'/ticket-categories/'), 'action' => 'App\Http\Controllers\TicketCategoryController@store', 'method' => 'POST']) !!}
         <div class="form-group">
-            {!! Form::label('name', $texts['TABLE_COL_NAME']) !!}
-            {!! Form::text('name', null, $attributes=['class' => 'form-control', 'placeholder' => $texts['TABLE_COL_NAME']]) !!}
+            {!! Form::label('name', $texts['TEXT_NAME']) !!}
+            {!! Form::text('name', null, $attributes=['class' => 'form-control', 'placeholder' => $texts['TEXT_NAME']]) !!}
         </div>
         <div class="form-group">
-            {!! Form::label('description', $texts['TABLE_COL_DESCRIPTION']) !!}
-            {!! Form::text('description', null, $attributes=['class' => 'form-control', 'placeholder' => $texts['TABLE_COL_DESCRIPTION']]) !!}
+            {!! Form::label('description', $texts['TEXT_DESCRIPTION']) !!}
+            {!! Form::text('description', null, $attributes=['class' => 'form-control', 'placeholder' => $texts['TEXT_DESCRIPTION']]) !!}
         </div>
         
         <div class="my-3">
