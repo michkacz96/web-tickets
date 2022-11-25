@@ -61,6 +61,11 @@ class CreateContentLanguagesTable extends Migration
                 'VAR_NAME' => 'TEXT_NAME',
                 'en_us' => 'Name',
                 'pl_pl' => 'Nazwa'
+            ],
+            [
+                'VAR_NAME' => 'BTN_SAVE_CHANGES',
+                'en_us' => 'Save changes',
+                'pl_pl' => 'Zapisz zmiany'
             ]
         );
     

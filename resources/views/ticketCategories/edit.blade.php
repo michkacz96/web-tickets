@@ -16,7 +16,7 @@
         </div>
         
         <div class="my-3">
-            {{Form::submit($texts['BTN_EDIT']." ".$ticketCategory->name, ['class' => 'btn btn-primary float-end'])}}
+            {{Form::submit($texts['BTN_SAVE_CHANGES'], ['class' => 'btn btn-primary float-end'])}}
         </div>
     {!! Form::close() !!}
 @endsection
