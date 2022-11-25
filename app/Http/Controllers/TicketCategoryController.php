@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TicketCategory;
+use App\Models\ContentLanguage;
 use App\Http\Requests\StoreTicketCategoryRequest;
 use App\Http\Requests\UpdateTicketCategoryRequest;
 
@@ -15,9 +16,15 @@ class TicketCategoryController extends Controller
      */
     public function index()
     {
+        $lg = "pl_pl";
         $text_data = array(
-            'NO_DATA_MSG' => 'No data yet.',
-            'CREATE_NEW_BUTTON' => 'Create new category'
+            'BTN_EDIT' => ContentLanguage::getText("BTN_EDIT", $lg),
+            'BTN_SHOW' => ContentLanguage::getText("BTN_SHOW", $lg),
+            'BTN_DELETE' => ContentLanguage::getText("BTN_DELETE", $lg),
+            'TABLE_COL_NAME' => ContentLanguage::getText("TABLE_COL_NAME", $lg),
+            'TABLE_COL_DESCRIPTION' => ContentLanguage::getText("TABLE_COL_DESCRIPTION", $lg),
+            'NO_DATA_MSG' => ContentLanguage::getText("NO_DATA_MSG", $lg),
+            'CREATE_NEW_BUTTON_TICKET_CATEGORY' => ContentLanguage::getText("CREATE_NEW_BUTTON_TICKET_CATEGORY", $lg)
         );
 
         $data = array(
