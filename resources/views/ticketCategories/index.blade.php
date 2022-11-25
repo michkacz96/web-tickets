@@ -22,7 +22,6 @@
                         <td>{{$ticketCategory->description}}</td>
                         <td>
                             <a href={{url($language.'/ticket-categories/'.$ticketCategory->id.'/edit')}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{$texts['BTN_EDIT']}}</a>
-                            <a href={{url($language.'/ticket-categories/'.$ticketCategory->id)}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{$texts['BTN_SHOW']}}</a>
                         </td>
                     </tr>
                 @endforeach
