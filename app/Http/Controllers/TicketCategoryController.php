@@ -16,7 +16,6 @@ class TicketCategoryController extends Controller
      */
     public function index($lg)
     {
-        //$lg = "pl_pl";
         $text_data = array(
             'BTN_EDIT' => ContentLanguage::getText("BTN_EDIT", $lg),
             'BTN_SHOW' => ContentLanguage::getText("BTN_SHOW", $lg),
