@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+    <a href="{{url('/ticket-categories/create')}}" class="btn btn-primary btn-block">New category</a>
+    <hr class="my-3">
     @if(count((is_countable($ticketCategories)?$ticketCategories:[])))
         <table class="table table-hover">
             <thead>
@@ -24,6 +26,6 @@
               </tbody>
         </table>
     @else
-        <p class="text-center">{{$NO_DATA_MSG}}</p>
+        <p class="text-center">{{$texts['NO_DATA_MSG']}}</p>
     @endif
 @endsection

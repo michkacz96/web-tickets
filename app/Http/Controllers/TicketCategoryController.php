@@ -15,9 +15,14 @@ class TicketCategoryController extends Controller
      */
     public function index()
     {
+        $text_data = array(
+            'NO_DATA_MSG' => 'No data yet.',
+            'CREATE_NEW_BUTTON' => 'Create new category'
+        );
+
         $data = array(
             'ticketCategories' => TicketCategory::all(),
-            'NO_DATA_MSG' => 'No data yet.'
+            'texts' => $text_data  
         );
         return view('ticketCategories.index')->with($data);
     }
