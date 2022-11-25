@@ -89,7 +89,7 @@ class TicketCategoryController extends Controller
             'TEXT_NAME' => ContentLanguage::getText("TEXT_NAME", $lg),
             'TEXT_DESCRIPTION' => ContentLanguage::getText("TEXT_DESCRIPTION", $lg),
             'BTN_GO_BACK' => ContentLanguage::getText("BTN_GO_BACK", $lg),
-            'BTN_EDIT' => ContentLanguage::getText("BTN_EDIT", $lg)
+            'BTN_SAVE_CHANGES' => ContentLanguage::getText("BTN_SAVE_CHANGES", $lg)
         );
 
         $data = array(
