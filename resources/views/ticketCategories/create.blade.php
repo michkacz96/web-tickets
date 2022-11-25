@@ -5,7 +5,7 @@
 
     <hr class="my-3">
     
-    {!! Form::open([['action' => 'App\Http\Controllers\TicketCategoryController@store', 'method' => 'POST']]) !!}
+    {!! Form::open(['url' => url($language.'/ticket-categories/'), 'action' => 'App\Http\Controllers\TicketCategoryController@store', 'method' => 'POST']) !!}
         <div class="form-group">
             {!! Form::label('name', $texts['TABLE_COL_NAME']) !!}
             {!! Form::text('name', null, $attributes=['class' => 'form-control', 'placeholder' => $texts['TABLE_COL_NAME']]) !!}
