@@ -79,7 +79,9 @@ class TicketCategoryController extends Controller
      */
     public function update(UpdateTicketCategoryRequest $request, TicketCategory $ticketCategory)
     {
-        //
+        $ticketCategory->update($request->all());
+
+        return redirect('/ticket-categories');
     }
 
     /**

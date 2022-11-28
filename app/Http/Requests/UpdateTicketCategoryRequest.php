@@ -13,7 +13,7 @@ class UpdateTicketCategoryRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class UpdateTicketCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => ['required'],
+            'description' => ['required']
         ];
+    }
+
+    protected function prepareForValidation(){
+        $this->merge([
+            'name' => $this->name,
+            'description' => $this->description
+        ]);
     }
 }
