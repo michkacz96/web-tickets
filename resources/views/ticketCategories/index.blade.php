@@ -27,7 +27,9 @@
                 @endforeach
               </tbody>
         </table>
+        
         {{$ticketCategories->links()}}
+
     @else
         <p class="text-center">{{__('NO_DATA_MSG')}}</p>
     @endif
