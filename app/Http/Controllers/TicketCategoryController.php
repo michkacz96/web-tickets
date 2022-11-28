@@ -17,7 +17,7 @@ class TicketCategoryController extends Controller
     public function index()
     {
         $data = array(
-            'ticketCategories' => TicketCategory::all() 
+            'ticketCategories' => TicketCategory::paginate(6) 
         );
         return view('ticketCategories.index')->with($data);
     }
@@ -40,7 +40,9 @@ class TicketCategoryController extends Controller
      */
     public function store(StoreTicketCategoryRequest $request)
     {
-        //
+        TicketCategory::create($request->all());
+
+        return redirect('/ticket-categories');
     }
 
     /**

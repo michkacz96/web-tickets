@@ -9,10 +9,16 @@
         <div class="form-group">
             {!! Form::label('name', __('TEXT_NAME')) !!}
             {!! Form::text('name', null, $attributes=['class' => 'form-control', 'placeholder' => __('TEXT_NAME')]) !!}
+            @error('name')
+                <strong class="text-danger">{{ $message }}</strong>    
+            @enderror
         </div>
         <div class="form-group">
             {!! Form::label('description', __('TEXT_DESCRIPTION')) !!}
             {!! Form::text('description', null, $attributes=['class' => 'form-control', 'placeholder' => __('TEXT_DESCRIPTION')]) !!}
+            @error('description')
+                <strong class="text-danger">{{ $message }}</strong>    
+            @enderror
         </div>
         
         <div class="my-3">
