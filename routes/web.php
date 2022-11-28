@@ -13,11 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+// Route::resource('{locale}/ticket-categories', App\Http\Controllers\TicketCategoryController::class);
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group([
+    'prefix' => '{locale}',
+    'middleware' => 'setlocale',
+], function(){
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
+    Route::resource('ticket-categories', App\Http\Controllers\TicketCategoryController::class);
+    Auth::routes();
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
-
-Route::resource('{language}/ticket-categories', App\Http\Controllers\TicketCategoryController::class);
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
