@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'failed' => 'Podane dane użytkownika nie pasują do zadnego z naszych użytkowników.',
+    'failed' => 'Podane dane nie pasują do żadnego z naszych użytkowników.',
     'password' => 'Niepoprawne hasło użytkownika.',
     'throttle' => 'Za dużo prób logowania. Spróbuj ponownie za :seconds sekund.',
 

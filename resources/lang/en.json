@@ -1,3 +1,11 @@
 {
-    "BTN_SIGNIN": "Sign in"
+    "BTN_CREATE_CATEGORY": "Create new category",
+    "NO_DATA_MSG": "No data yet.",
+    "BTN_SHOW": "Show",
+    "BTN_EDIT": "Edit",
+    "BTN_DELETE": "Delete",
+    "TEXT_DESCRIPTION": "Description",
+    "TEXT_NAME": "Name",
+    "BTN_GO_BACK": "Go back",
+    "BTN_SAVE_CHANGES": "Save changes"
 }

@@ -1,3 +1,11 @@
 {
-    "BTN_SIGNIN": "Zaloguj się"
+    "BTN_CREATE_CATEGORY": "Dodaj nową kategorię",
+    "NO_DATA_MSG": "Brak danych",
+    "BTN_SHOW": "Pokaż",
+    "BTN_EDIT": "Edytuj",
+    "BTN_DELETE": "Usuń",
+    "TEXT_DESCRIPTION": "Opis",
+    "TEXT_NAME": "Nazwa",
+    "BTN_GO_BACK": "Wróć",
+    "BTN_SAVE_CHANGES": "Zapisz zmiany"
 }

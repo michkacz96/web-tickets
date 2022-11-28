@@ -14,22 +14,10 @@ class TicketCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($lg)
+    public function index()
     {
-        $text_data = array(
-            'BTN_EDIT' => ContentLanguage::getText("BTN_EDIT", $lg),
-            'BTN_SHOW' => ContentLanguage::getText("BTN_SHOW", $lg),
-            'BTN_DELETE' => ContentLanguage::getText("BTN_DELETE", $lg),
-            'TEXT_NAME' => ContentLanguage::getText("TEXT_NAME", $lg),
-            'TEXT_DESCRIPTION' => ContentLanguage::getText("TEXT_DESCRIPTION", $lg),
-            'NO_DATA_MSG' => ContentLanguage::getText("NO_DATA_MSG", $lg),
-            'BTN_CREATE_CATEGORY' => ContentLanguage::getText("BTN_CREATE_CATEGORY", $lg)
-        );
-
         $data = array(
-            'ticketCategories' => TicketCategory::all(),
-            'language' => $lg,
-            'texts' => $text_data  
+            'ticketCategories' => TicketCategory::all() 
         );
         return view('ticketCategories.index')->with($data);
     }
@@ -39,20 +27,9 @@ class TicketCategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($lg)
+    public function create()
     {
-        $text_data = array(
-            'TEXT_NAME' => ContentLanguage::getText("TEXT_NAME", $lg),
-            'TEXT_DESCRIPTION' => ContentLanguage::getText("TEXT_DESCRIPTION", $lg),
-            'BTN_GO_BACK' => ContentLanguage::getText("BTN_GO_BACK", $lg),
-            'BTN_CREATE_CATEGORY' => ContentLanguage::getText("BTN_CREATE_CATEGORY", $lg)
-        );
-
-        $data = array(
-            'language' => $lg,
-            'texts' => $text_data  
-        );
-        return view('ticketCategories.create')->with($data);
+        return view('ticketCategories.create');
     }
 
     /**
@@ -83,18 +60,9 @@ class TicketCategoryController extends Controller
      * @param  \App\Models\TicketCategory  $ticketCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit($lg, TicketCategory $ticketCategory)
+    public function edit(TicketCategory $ticketCategory)
     {
-        $text_data = array(
-            'TEXT_NAME' => ContentLanguage::getText("TEXT_NAME", $lg),
-            'TEXT_DESCRIPTION' => ContentLanguage::getText("TEXT_DESCRIPTION", $lg),
-            'BTN_GO_BACK' => ContentLanguage::getText("BTN_GO_BACK", $lg),
-            'BTN_SAVE_CHANGES' => ContentLanguage::getText("BTN_SAVE_CHANGES", $lg)
-        );
-
         $data = array(
-            'language' => $lg,
-            'texts' => $text_data,
             'ticketCategory' => $ticketCategory
         );
         return view('ticketCategories.edit')->with($data);
