@@ -7,5 +7,6 @@
     "TEXT_DESCRIPTION": "Opis",
     "TEXT_NAME": "Nazwa",
     "BTN_GO_BACK": "Wróć",
-    "BTN_SAVE_CHANGES": "Zapisz zmiany"
+    "BTN_SAVE_CHANGES": "Zapisz zmiany",
+    "TICKET_CATEGORIES": "Kategorie zgłoszeń"
 }

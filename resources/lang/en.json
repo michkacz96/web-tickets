@@ -7,5 +7,6 @@
     "TEXT_DESCRIPTION": "Description",
     "TEXT_NAME": "Name",
     "BTN_GO_BACK": "Go back",
-    "BTN_SAVE_CHANGES": "Save changes"
+    "BTN_SAVE_CHANGES": "Save changes",
+    "TICKET_CATEGORIES": "Ticket categories"
 }
