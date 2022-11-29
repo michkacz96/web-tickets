@@ -22,9 +22,14 @@
                         <td>{{$ticketCategory->name}}</td>
                         <td>{{$ticketCategory->description}}</td>
                         <td>{{$ticketCategory->deleted_at}}</td>
-                        <td>
-                            <a href={{url('/ticket-categories/'.$ticketCategory->id.'/edit')}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Restore')}}</a>
-                            <a href="" class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Delete forever')}}</a>
+                        <td class="d-flex flex-row justify-content-evenly">
+                            {!! Form::open(['action' => ['App\Http\Controllers\TicketCategoryController@restore', $ticketCategory->id], 'method' => 'POST', 'class' => 'float-end']) !!}
+                                {{Form::submit(__('Restore'), ['class' => 'btn btn-sm btn-secondary btn-block'])}}
+                            {!! Form::close() !!}
+                            {!! Form::open(['action' => ['App\Http\Controllers\TicketCategoryController@forceDelete', $ticketCategory->id], 'method' => 'POST', 'class' => 'float-end']) !!}
+                                {{Form::hidden('_method', 'DELETE')}}
+                                {{Form::submit(__('Delete forever'), ['class' => 'btn btn-sm btn-danger btn-block'])}}
+                            {!! Form::close() !!}
                         </td>
                     </tr>
                 @endforeach

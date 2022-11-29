@@ -17,7 +17,7 @@ class TicketCategoryController extends Controller
     public function index()
     {
         $data = array(
-            'ticketCategories' => TicketCategory::paginate(6) 
+            'ticketCategories' => TicketCategory::paginate() 
         );
         return view('ticketCategories.index')->with($data);
     }
@@ -92,7 +92,9 @@ class TicketCategoryController extends Controller
      */
     public function destroy(TicketCategory $ticketCategory)
     {
-        //
+        $ticketCategory->delete();
+
+        return redirect('/ticket-categories');
     }
 
     /**
@@ -102,9 +104,21 @@ class TicketCategoryController extends Controller
      */
     public function deleted(){
         $data = array(
-            'ticketCategories' => TicketCategory::onlyTrashed()->paginate(6)
+            'ticketCategories' => TicketCategory::onlyTrashed()->paginate()
         );
         return view('ticketCategories.deleted')->with($data);
+    }
+
+    /**
+     * Restore deleted resource.
+     *
+     * @param  \App\Models\TicketCategory  $ticketCategory
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        $ticketCategory = TicketCategory::withTrashed()->find($id)->restore();
+        return redirect('/ticket-categories/deleted');
     }
 
     /**
@@ -113,8 +127,10 @@ class TicketCategoryController extends Controller
      * @param  \App\Models\TicketCategory  $ticketCategory
      * @return \Illuminate\Http\Response
      */
-    public function forceDelete(TicketCategory $ticketCategory)
+    public function forceDelete($id)
     {
-        //
+        $ticketCategory = TicketCategory::withTrashed()->find($id)->forceDelete();
+
+        return redirect('/ticket-categories/deleted');
     }
 }

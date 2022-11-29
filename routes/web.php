@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::delete('/ticket-categories/{ticket_category}/force-delete', [App\Http\Controllers\TicketCategoryController::class, 'forceDelete'])->name('ticket-categories.force-delete');
+Route::post('/ticket-categories/{ticket_category}/restore', [App\Http\Controllers\TicketCategoryController::class, 'restore'])->name('ticket-categories.restore');
 Route::get('/ticket-categories/deleted', [App\Http\Controllers\TicketCategoryController::class, 'deleted'])->name('ticket-categories.deleted');
 Route::resource('/ticket-categories', App\Http\Controllers\TicketCategoryController::class);
 Auth::routes();
