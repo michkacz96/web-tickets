@@ -1,0 +1,19 @@
+{
+    "Login": "Login",
+    "Register": "Register",
+    "Logout": "Logout",
+    "Go back": "Go back",
+    "Name": "Name",
+    "Description": "Description",
+    "Create new ticket category": "Create new ticket category",
+    "Ticket categories": "Ticket categories",
+    "List of ticket categories": "List of ticket categories",
+    "Deleted ticket categories": "Deleted ticket categories",
+    "Go to list of ticket categories": "Go to list of ticket categories",
+    "Date deleted": "Date deleted",
+    "Restore": "Restore",
+    "Delte forever": "Delete forever",
+    "No data to display": "No data to display",
+    "Edit": "Edit",
+    "Save changes": "Save changes"
+}

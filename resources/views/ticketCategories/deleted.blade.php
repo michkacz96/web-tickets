@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="d-flex justify-content-start">
-        <a href="{{route('ticket-categories.create')}}" class="btn btn-primary btn-block">{{__('Create new ticket category')}}</a>
+        <a href="{{route('ticket-categories.index')}}" class="btn btn-primary btn-block">{{__('Go to list of ticket categories')}}</a>
     </div>
     
     <hr class="my-3">
@@ -12,6 +12,7 @@
                 <tr>
                   <th scope="col">{{__('Name')}}</th>
                   <th scope="col">{{__('Description')}}</th>
+                  <th scope="col">{{__('Date deleted')}}</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
@@ -20,8 +21,10 @@
                     <tr>
                         <td>{{$ticketCategory->name}}</td>
                         <td>{{$ticketCategory->description}}</td>
+                        <td>{{$ticketCategory->deleted_at}}</td>
                         <td>
-                            <a href={{url('/ticket-categories/'.$ticketCategory->id.'/edit')}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Edit')}}</a>
+                            <a href={{url('/ticket-categories/'.$ticketCategory->id.'/edit')}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Restore')}}</a>
+                            <a href="" class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Delete forever')}}</a>
                         </td>
                     </tr>
                 @endforeach

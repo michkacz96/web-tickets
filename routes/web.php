@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/ticket-categories/deleted', [App\Http\Controllers\TicketCategoryController::class, 'deleted'])->name('ticket-categories.deleted');
 Route::resource('/ticket-categories', App\Http\Controllers\TicketCategoryController::class);
 Auth::routes();
 

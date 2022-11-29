@@ -94,4 +94,27 @@ class TicketCategoryController extends Controller
     {
         //
     }
+
+    /**
+     * Display a listing of the deleted resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleted(){
+        $data = array(
+            'ticketCategories' => TicketCategory::onlyTrashed()->paginate(6)
+        );
+        return view('ticketCategories.deleted')->with($data);
+    }
+
+    /**
+     * Remove the specified resource from storage premanently.
+     *
+     * @param  \App\Models\TicketCategory  $ticketCategory
+     * @return \Illuminate\Http\Response
+     */
+    public function forceDelete(TicketCategory $ticketCategory)
+    {
+        //
+    }
 }
