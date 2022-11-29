@@ -1,5 +1,5 @@
 {
-    "Login": "Login",
+    "Login": "Zaloguj się",
     "Register": "Rejestracja",
     "Logout": "Wyloguj się",
     "Go back": "Wróć",
@@ -16,5 +16,10 @@
     "No data to display": "Brak danych do wyświetlenia",
     "Edit": "Edytuj",
     "Save changes": "Zapisz zmiany",
-    "Delete": "Usuń"
+    "Delete": "Usuń",
+    "Email address": "Adres email",
+    "Password": "Hasło",
+    "Remember me": "Pamiętaj mnie",
+    "Forgot your password?": "Nie pamiętasz hasła?",
+    "Confirm password": "Potwierdź hasło"
 }
