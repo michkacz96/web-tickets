@@ -12,8 +12,9 @@
     "Go to list of ticket categories": "Przejdź do listy kategorii zgłoszeń",
     "Date deleted": "Data usunięcia",
     "Restore": "Przywróć",
-    "Delte forever": "Usuń na zawsze",
+    "Delete forever": "Usuń na zawsze",
     "No data to display": "Brak danych do wyświetlenia",
     "Edit": "Edytuj",
-    "Save changes": "Zapisz zmiany"
+    "Save changes": "Zapisz zmiany",
+    "Delete": "Usuń"
 }
