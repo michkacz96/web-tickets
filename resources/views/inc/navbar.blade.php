@@ -12,11 +12,17 @@
             <ul class="navbar-nav me-auto">
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{__('TICKET_CATEGORIES')}}
+                        {{__('TEXT_TICKET_CATEGORIES')}}
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/ticket-categories">
-                            {{ __('TICKET_CATEGORIES') }}
+                        <a class="dropdown-item" href="{{route('ticket-categories.index')}}">
+                            {{ __('TEXT_LIST_TICKET_CATEGORIES') }}
+                        </a>
+                        <a class="dropdown-item" href="{{route('ticket-categories.create')}}">
+                            {{ __('TEXT_CREATE_TICKET_CATEGORY') }}
+                        </a>
+                        <a class="dropdown-item" href="{{route('ticket-categories.deleted')}}">
+                            {{ __('TEXT_TRASH_TICKET_CATEGORY') }}
                         </a>
                     </div>
                 </li>

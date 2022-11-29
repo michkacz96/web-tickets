@@ -8,5 +8,8 @@
     "TEXT_NAME": "Nazwa",
     "BTN_GO_BACK": "Wróć",
     "BTN_SAVE_CHANGES": "Zapisz zmiany",
-    "TICKET_CATEGORIES": "Kategorie zgłoszeń"
+    "TEXT_TICKET_CATEGORIES": "Kategorie zgłoszeń",
+    "TEXT_LIST_TICKET_CATEGORIES": "Lista kategorii zgłoszeń",
+    "TEXT_CREATE_TICKET_CATEGORY": "Dodaj nową kategorię",
+    "TEXT_TRASH_TICKET_CATEGORY": "Usunięte kategorie zgłoszeń"
 }

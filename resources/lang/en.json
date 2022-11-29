@@ -8,5 +8,8 @@
     "TEXT_NAME": "Name",
     "BTN_GO_BACK": "Go back",
     "BTN_SAVE_CHANGES": "Save changes",
-    "TICKET_CATEGORIES": "Ticket categories"
+    "TEXT_TICKET_CATEGORIES": "Ticket categories",
+    "TEXT_LIST_TICKET_CATEGORIES": "List of ticket categories",
+    "TEXT_CREATE_TICKET_CATEGORY": "Create new ticket category",
+    "TEXT_TRASH_TICKET_CATEGORY": "Deleted ticket categoires"
 }
