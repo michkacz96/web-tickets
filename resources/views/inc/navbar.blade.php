@@ -10,6 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav me-auto">
+                <!-- Ticket categories -->
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{__('Ticket categories')}}
@@ -23,6 +24,23 @@
                         </a>
                         <a class="dropdown-item" href="{{route('ticket-categories.deleted')}}">
                             {{ __('Deleted ticket categories') }}
+                        </a>
+                    </div>
+                </li>
+                <!-- Customers -->
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{__('Customers')}}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('customers.index')}}">
+                            {{ __('List of customers') }}
+                        </a>
+                        <a class="dropdown-item" href="{{route('customers.create')}}">
+                            {{ __('Create new customer') }}
+                        </a>
+                        <a class="dropdown-item" href="{{route('customers.deleted')}}">
+                            {{ __('Deleted customers') }}
                         </a>
                     </div>
                 </li>

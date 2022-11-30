@@ -21,5 +21,19 @@
     "Password": "Hasło",
     "Remember me": "Pamiętaj mnie",
     "Forgot your password?": "Nie pamiętasz hasła?",
-    "Confirm password": "Potwierdź hasło"
+    "Confirm password": "Potwierdź hasło",
+    "Customers": "Kontrahenci",
+    "List of customers": "Lista kontrahentów",
+    "Create new customer": "Dodaj nowego kontrahenta",
+    "Deleted customers": "Usunięci kontrahenci",
+    "Full name": "Pełna nazwa",
+    "Street": "Ulica",
+    "Building number": "Numer budynku",
+    "Apartment number": "Numer lokalu",
+    "Postal code": "Kod pocztowy",
+    "City": "Miasto",
+    "Province": "Województwo",
+    "Country": "Kraj",
+    "TIN": "NIP",
+    "Taxpayer Identification Number": "Numer Identyfikacji Podatkowej"
 }
