@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 Route::delete('/ticket-categories/{ticket_category}/force-delete', [App\Http\Controllers\TicketCategoryController::class, 'forceDelete'])->name('ticket-categories.force-delete');
 Route::post('/ticket-categories/{ticket_category}/restore', [App\Http\Controllers\TicketCategoryController::class, 'restore'])->name('ticket-categories.restore');
