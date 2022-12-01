@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\CustomerContact;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 
@@ -55,7 +56,13 @@ class CustomerController extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+        $data = [
+            'customer' => $customer,
+            'phoneNumbers' => $customer->customerContacts->where('type', 'P'),
+            'emails' => $customer->customerContacts->where('type', 'E')
+        ];
+
+        return view('customers.show')->with($data);
     }
 
     /**

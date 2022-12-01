@@ -36,5 +36,7 @@
     "Country": "Kraj",
     "TIN": "NIP",
     "Taxpayer Identification Number": "Numer Identyfikacji Podatkowej",
-    "Address": "Adres"
+    "Address": "Adres",
+    "Business": "Firma",
+    "Details": "Szczegóły"
 }

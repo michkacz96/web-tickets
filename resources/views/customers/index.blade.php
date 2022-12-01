@@ -11,14 +11,10 @@
             <thead>
                 <tr>
                   <th scope="col">{{__('Name')}}</th>
-                  <th scope="col">{{__('Full name')}}</th>
                   <th scope="col">{{__('Address')}}</th>
-                  <th scope="col">{{__('Postal code')}}</th>
-                  <th scope="col">{{__('City')}}</th>
-                  <th scope="col">{{__('Province')}}</th>
-                  <th scope="col">{{__('Country')}}</th>
                   <th scope="col">{{__('TIN')}}</th>
                   <th scope="col">{{__('Type')}}</th>
+                  <th scope="col">{{__('Contact info')}}</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
@@ -26,15 +22,18 @@
                 @foreach($customers as $customer)
                     <tr>
                         <td>{{$customer->name}}</td>
-                        <td>{{$customer->full_name}}</td>
                         <td>{{$customer->getAddress()}}</td>
-                        <td>{{$customer->postal_code}}</td>
-                        <td>{{$customer->city}}</td>
-                        <td>{{$customer->province}}</td>
-                        <td>{{$customer->country}}</td>
                         <td>{{$customer->tin_ssn}}</td>
-                        <td>{{$customer->type}}</td>
+                        <td>{{__($customer->getCustomerType())}}</td>
+                        <td>
+                            @if(count((is_countable($customer->customerContacts)?$customer->customerContacts:[])))
+                                @foreach($customer->customerContacts as $contact)
+                                    {{$contact->value.';'}}
+                                @endforeach
+                            @endif
+                        </td>
                         <td class="d-flex flex-row justify-content-evenly">
+                            <a href={{url('/customers/'.$customer->id)}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Details')}}</a>
                             <a href={{url('/customers/'.$customer->id.'/edit')}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Edit')}}</a>
                             {!! Form::open(['action' => ['App\Http\Controllers\CustomerController@destroy', $customer->id], 'method' => 'POST', 'class' => 'float-end']) !!}
                                 {{Form::hidden('_method', 'DELETE')}}

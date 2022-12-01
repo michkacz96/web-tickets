@@ -33,7 +33,29 @@ class Customer extends Model
         return self::$customerTypes;
     }
 
+    public function getCustomerType(){
+        return self::$customerTypes[$this->type];
+    }
+
     public function getAddress(){
-        return $this->address.' '.$this->building_number.'/'.$this->apartment_number;
+        $separator = "/";
+
+        if(empty($this->apartment_number)){
+            $separator = "";
+        }
+
+        return $this->address.' '.$this->building_number.$separator.$this->apartment_number.' '.$this->postal_code.' '.$this->city;
+    }
+
+    public function getAddress2(){
+        $separator = ", ";
+        if(empty($this->country)){
+            $separator = "";
+        }
+        return $this->province.$separator.$this->country;
+    }
+
+    public function customerContacts(){
+        return $this->hasMany(CustomerContact::class);
     }
 }
