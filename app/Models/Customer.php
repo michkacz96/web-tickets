@@ -55,6 +55,15 @@ class Customer extends Model
         return $this->province.$separator.$this->country;
     }
 
+    public function getFullAddress(){
+        $separator = ", ";
+
+        if(empty($this->getAddress2())){
+            $separator = "";
+        }
+        return $this->getAddress().$separator.$this->getAddress2();
+    }
+
     public function customerContacts(){
         return $this->hasMany(CustomerContact::class);
     }

@@ -14,7 +14,6 @@
                   <th scope="col">{{__('Address')}}</th>
                   <th scope="col">{{__('TIN')}}</th>
                   <th scope="col">{{__('Type')}}</th>
-                  <th scope="col">{{__('Contact info')}}</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
@@ -22,16 +21,9 @@
                 @foreach($customers as $customer)
                     <tr>
                         <td>{{$customer->name}}</td>
-                        <td>{{$customer->getAddress()}}</td>
+                        <td>{{$customer->getFullAddress()}}</td>
                         <td>{{$customer->tin_ssn}}</td>
                         <td>{{__($customer->getCustomerType())}}</td>
-                        <td>
-                            @if(count((is_countable($customer->customerContacts)?$customer->customerContacts:[])))
-                                @foreach($customer->customerContacts as $contact)
-                                    {{$contact->value.';'}}
-                                @endforeach
-                            @endif
-                        </td>
                         <td class="d-flex flex-row justify-content-evenly">
                             <a href={{url('/customers/'.$customer->id)}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Details')}}</a>
                             <a href={{url('/customers/'.$customer->id.'/edit')}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Edit')}}</a>

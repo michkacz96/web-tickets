@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="d-flex justify-content-start">
-        <a href="{{url()->previous()}}" class="btn btn-primary btn-block">{{__('Go back')}}</a>
+    <div class="d-flex align-items-center">
+        <a href="{{url()->previous()}}" class="btn btn-primary btn-block me-2">{{__('Go back')}}</a>
+        <a href="{{url('/customers/'.$customer->id.'/edit')}}" class="btn btn-secondary btn-block me-2">{{__('Edit')}}</a>
     </div>
     <hr class="my-3">
     <h4>{{$customer->name}}</h4>
