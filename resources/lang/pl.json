@@ -35,5 +35,6 @@
     "Province": "Województwo",
     "Country": "Kraj",
     "TIN": "NIP",
-    "Taxpayer Identification Number": "Numer Identyfikacji Podatkowej"
+    "Taxpayer Identification Number": "Numer Identyfikacji Podatkowej",
+    "Address": "Adres"
 }
