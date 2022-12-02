@@ -10,6 +10,16 @@ use App\Http\Requests\UpdateCustomerContactRequest;
 class CustomerContactController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
      * Display a listing of the phones.
      *
      * @return \Illuminate\Http\Response
