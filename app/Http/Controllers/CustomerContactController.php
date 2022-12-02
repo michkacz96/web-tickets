@@ -99,7 +99,7 @@ class CustomerContactController extends Controller
     {
         $data = [
             'contact' => $contact,
-            'customers' => $this->customers,
+            'customers' => Customer::getCustomers(),
             'contactTypes' => CustomerContact::getContactTypes()
         ];
 
@@ -115,7 +115,9 @@ class CustomerContactController extends Controller
      */
     public function update(UpdateCustomerContactRequest $request, CustomerContact $contact)
     {
-        //
+        $contact->update($request->all());
+
+        return redirect('/contacts');
     }
 
     /**

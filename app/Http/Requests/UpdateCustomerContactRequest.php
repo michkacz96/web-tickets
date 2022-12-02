@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateCustomerContactRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateCustomerContactRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +24,30 @@ class UpdateCustomerContactRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
-        ];
+        if($this->type == 'E' || $this->type == 'e'){
+            return [
+            'type' => Rule::in(['P', 'E']),
+            'customer' => ['required'],
+            'value' => ['required', 'email']
+            ];
+        } elseif($this->type == 'P' || $this->type == 'p'){
+            return [
+                'type' => Rule::in(['P', 'E']),
+                'customer' => ['required'],
+                'value' => ['required', 'max:12']
+            ];
+        }
+        
+    }
+
+    protected function prepareForValidation(){
+        $this->type = strtoupper($this->type);
+
+        $this->merge([
+            'type' => $this->type,
+            'customer_id' => $this->customer,
+            'value' => $this->value,
+            'tags' => $this->tags
+        ]);
     }
 }
