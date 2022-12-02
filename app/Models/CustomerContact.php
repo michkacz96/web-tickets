@@ -10,6 +10,15 @@ class CustomerContact extends Model
 {
     use HasFactory, SoftDeletes;
 
+    private static $contatcTypes = [
+        'E' => 'Email',
+        'P' => 'Phone'
+    ];
+
+    public static function getContactTypes(){
+        return self::$contatcTypes;
+    }
+
     public function customer(){
         return $this->belongsTo(Customer::class);
     }

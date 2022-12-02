@@ -30,7 +30,8 @@ class CustomerController extends Controller
     public function create()
     {
         $data = [
-            'customerTypes' => Customer::getCustomerTypes()
+            'customerTypes' => Customer::getCustomerTypes(),
+            'contactTypes' => CustomerContact::getContactTypes()
         ];
         return view('customers.create')->with($data);
     }
