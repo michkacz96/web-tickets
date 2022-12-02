@@ -28,7 +28,7 @@ class StoreCustomerContactRequest extends FormRequest
             return [
             'type' => Rule::in(['P', 'E']),
             'customer' => ['required'],
-            'value' => ['required']
+            'value' => ['required', 'email']
             ];
         } elseif($this->type == 'P' || $this->type == 'p'){
             return [
