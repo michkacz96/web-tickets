@@ -11,14 +11,14 @@
     {!! Form::open(['url' => route('ticket-categories.store'), 'action' => 'App\Http\Controllers\TicketCategoryController@store', 'method' => 'POST']) !!}
         <div class="form-group">
             {!! Form::label('name', __('Name')) !!}
-            {!! Form::text('name', null, $attributes=['class' => 'form-control', 'placeholder' => __('Name')]) !!}
+            {!! Form::text('name', old('name'), $attributes=['class' => 'form-control', 'placeholder' => __('Name')]) !!}
             @error('name')
                 <strong class="text-danger">{{ $message }}</strong>    
             @enderror
         </div>
         <div class="form-group">
             {!! Form::label('description', __('Description')) !!}
-            {!! Form::text('description', null, $attributes=['class' => 'form-control', 'placeholder' => __('Description')]) !!}
+            {!! Form::text('description', old('description'), $attributes=['class' => 'form-control', 'placeholder' => __('Description')]) !!}
             @error('description')
                 <strong class="text-danger">{{ $message }}</strong>    
             @enderror
