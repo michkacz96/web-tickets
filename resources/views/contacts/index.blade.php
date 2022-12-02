@@ -29,7 +29,6 @@
                         @endif
                         <td>{{$contact->tags}}</td>
                         <td class="d-flex flex-row justify-content-evenly">
-                            <a href={{url('/contacts/'.$contact->id)}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Details')}}</a>
                             <a href={{url('/contacts/'.$contact->id.'/edit')}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Edit')}}</a>
                             {!! Form::open(['action' => ['App\Http\Controllers\CustomerContactController@destroy', $contact->id], 'method' => 'POST', 'class' => 'float-end']) !!}
                                 {{Form::hidden('_method', 'DELETE')}}
