@@ -75,7 +75,7 @@ class CustomerContactController extends Controller
     {
         CustomerContact::create($request->all());
 
-        return redirect('/contacts');
+        return redirect()->back();
     }
 
     /**
@@ -117,7 +117,7 @@ class CustomerContactController extends Controller
     {
         $contact->update($request->all());
 
-        return redirect('/contacts');
+        return redirect()->back();
     }
 
     /**
@@ -128,6 +128,45 @@ class CustomerContactController extends Controller
      */
     public function destroy(CustomerContact $contact)
     {
-        //
+        $contact->delete();
+
+        return redirect()->back();
+    }
+
+    /**
+     * Display a listing of the deleted resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleted(){
+        $data = array(
+            'contacts' => CustomerContact::onlyTrashed()->paginate()
+        );
+        return view('contacts.deleted')->with($data);
+    }
+
+    /**
+     * Restore deleted resource.
+     *
+     * @param  \App\Models\TicketCategory  $ticketCategory
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        $contact = CustomerContact::withTrashed()->find($id)->restore();
+        return redirect()->back();
+    }
+
+    /**
+     * Remove the specified resource from storage premanently.
+     *
+     * @param  \App\Models\TicketCategory  $ticketCategory
+     * @return \Illuminate\Http\Response
+     */
+    public function forceDelete($id)
+    {
+        $contact = CustomerContact::withTrashed()->find($id)->forceDelete();
+
+        return redirect()->back();
     }
 }
