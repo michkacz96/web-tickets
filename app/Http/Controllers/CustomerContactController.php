@@ -3,22 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\CustomerContact;
+use App\Models\Customer;
 use App\Http\Requests\StoreCustomerContactRequest;
 use App\Http\Requests\UpdateCustomerContactRequest;
 
 class CustomerContactController extends Controller
 {
-    public $customers = [
-        "1" => "Firma 1",
-        "2" => "Firma 2",
-        "3" => "Firma 3",
-        "4" => "Firma 4",
-        "5" => "Firma 5",
-        "6" => "Firma 6",
-        "7" => "Firma 7",
-        "8" => "Firma 8"
-    ];
-
     /**
      * Display a listing of the phones.
      *
@@ -70,7 +60,7 @@ class CustomerContactController extends Controller
     {
         $data = [
             'contactTypes' => CustomerContact::getContactTypes(),
-            'customers' => $this->customers
+            'customers' => Customer::getCustomers()
         ];
         return view('contacts.create')->with($data);
     }
@@ -83,7 +73,9 @@ class CustomerContactController extends Controller
      */
     public function store(StoreCustomerContactRequest $request)
     {
-        //
+        CustomerContact::create($request->all());
+
+        return redirect('/contacts');
     }
 
     /**

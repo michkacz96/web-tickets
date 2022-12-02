@@ -33,6 +33,19 @@ class Customer extends Model
         return self::$customerTypes;
     }
 
+    public function getCustomers(){
+        $customers = self::all();
+        $customer_tab = [];
+
+        foreach($customers as $customer){
+            $customer_tab += [
+                $customer->id => $customer->name
+            ];
+        }
+
+        return $customer_tab;
+    }
+
     public function getCustomerType(){
         return self::$customerTypes[$this->type];
     }

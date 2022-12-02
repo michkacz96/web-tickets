@@ -10,6 +10,13 @@ class CustomerContact extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'customer_id',
+        'type',
+        'value',
+        'tags'
+    ];
+
     private static $contatcTypes = [
         'E' => 'Email',
         'P' => 'Phone'

@@ -9,7 +9,7 @@
     <hr>
     <h5 class="my-3">{{__('Add contact information')}}</h5>
     
-    {!! Form::open(['url' => route('customers.store'), 'action' => 'App\Http\Controllers\CustomerContactController@store', 'method' => 'POST']) !!}
+    {!! Form::open(['url' => route('contacts.store'), 'action' => 'App\Http\Controllers\CustomerContactController@store', 'method' => 'POST']) !!}
         <div class="row">
             <div class="form-group col-lg-12">
                 {{Form::label('customer', __('Customer'))}}
