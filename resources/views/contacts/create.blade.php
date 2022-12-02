@@ -12,11 +12,11 @@
     {!! Form::open(['url' => route('customers.store'), 'action' => 'App\Http\Controllers\CustomerContactController@store', 'method' => 'POST']) !!}
         <div class="row">
             <div class="form-group col-lg-12">
-                {{Form::label('type', 'Type')}}
+                {{Form::label('type', __('Customer'))}}
                 {{Form::select('type', $customers, null, ['class' => 'form-select', 'required'])}}
             </div>
             <div class="form-group col-lg-3">
-                {{Form::label('type', 'Type')}}
+                {{Form::label('type', __('Type'))}}
                 {{Form::select('type', $contactTypes, null, ['class' => 'form-select', 'required'])}}
             </div>
             <div class="form-group col-lg-3">

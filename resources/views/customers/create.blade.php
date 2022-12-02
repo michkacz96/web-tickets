@@ -12,7 +12,7 @@
     {!! Form::open(['url' => route('customers.store'), 'action' => 'App\Http\Controllers\CustomerController@store', 'method' => 'POST']) !!}
         <div class="row">
             <div class="form-group col-lg-3">
-                {{Form::label('type', 'Type')}}
+                {{Form::label('type', __('Type'))}}
                 {{Form::select('type', $customerTypes, old('type'), ['class' => 'form-select', 'required'])}}
             </div>
             <div class="form-group col-lg-3">

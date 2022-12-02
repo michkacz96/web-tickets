@@ -40,5 +40,16 @@
     "Business": "Firma",
     "Details": "Szczegóły",
     "Phone number": "Numer telefonu",
-    "Tags": "Etykiety"
+    "Tags": "Etykiety",
+    "Add new customer": "Dodaj nowego kontrahenta",
+    "Go to list of customers": "Przjdź do listy kontrahnetów",
+    "Type": "Rodzaj",
+    "Contacts": "Kontakty",
+    "Phone contacts": "Telefony",
+    "Email contacts": "Emaile",
+    "Add new contact": "Dodaj nowy kontakt",
+    "Deleted contacts": "Usunięte kontakty",
+    "Value": "Wartość",
+    "Add contact information": "Dodaj dane kontaktowe",
+    "Customer": "Kontrahent"
 }
