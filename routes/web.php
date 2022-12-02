@@ -29,8 +29,8 @@ Route::get('/customers/deleted', [App\Http\Controllers\CustomerController::class
 Route::resource('/customers', App\Http\Controllers\CustomerController::class);
 
 //customers' contacts
-Route::delete('/contacts/{customer_contact}/force-delete', [App\Http\Controllers\CustomerContactController::class, 'forceDelete'])->name('contacts.force-delete');
-Route::post('/contacts/{customer_contact}/restore', [App\Http\Controllers\CustomerContactController::class, 'restore'])->name('contacts.restore');
+Route::delete('/contacts/{contact}/force-delete', [App\Http\Controllers\CustomerContactController::class, 'forceDelete'])->name('contacts.force-delete');
+Route::post('/contacts/{contact}/restore', [App\Http\Controllers\CustomerContactController::class, 'restore'])->name('contacts.restore');
 Route::get('/contacts/deleted', [App\Http\Controllers\CustomerContactController::class, 'deleted'])->name('contacts.deleted');
 Route::get('/contacts/emails', [App\Http\Controllers\CustomerContactController::class, 'emails'])->name('contacts.emails');
 Route::get('/contacts/phones', [App\Http\Controllers\CustomerContactController::class, 'phones'])->name('contacts.phones');

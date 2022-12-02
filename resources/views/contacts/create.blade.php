@@ -12,16 +12,16 @@
     {!! Form::open(['url' => route('customers.store'), 'action' => 'App\Http\Controllers\CustomerContactController@store', 'method' => 'POST']) !!}
         <div class="row">
             <div class="form-group col-lg-12">
-                {{Form::label('type', __('Customer'))}}
-                {{Form::select('type', $customers, null, ['class' => 'form-select', 'required'])}}
+                {{Form::label('customer', __('Customer'))}}
+                {{Form::select('customer', $customers, old('customer'), ['class' => 'form-select', 'required'])}}
             </div>
             <div class="form-group col-lg-3">
                 {{Form::label('type', __('Type'))}}
-                {{Form::select('type', $contactTypes, null, ['class' => 'form-select', 'required'])}}
+                {{Form::select('type', $contactTypes, old('type'), ['class' => 'form-select', 'required'])}}
             </div>
             <div class="form-group col-lg-3">
                 {!! Form::label('value', __('Value')) !!}
-                {!! Form::text('value', null, $attributes=['class' => 'form-control', 'placeholder' => __('Value')]) !!}
+                {!! Form::text('value', old('value'), $attributes=['class' => 'form-control', 'placeholder' => __('Value')]) !!}
                 @error('value')
                     <strong class="text-danger">{{ $message }}</strong>    
                 @enderror

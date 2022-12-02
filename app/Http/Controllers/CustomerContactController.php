@@ -8,6 +8,17 @@ use App\Http\Requests\UpdateCustomerContactRequest;
 
 class CustomerContactController extends Controller
 {
+    public $customers = [
+        "1" => "Firma 1",
+        "2" => "Firma 2",
+        "3" => "Firma 3",
+        "4" => "Firma 4",
+        "5" => "Firma 5",
+        "6" => "Firma 6",
+        "7" => "Firma 7",
+        "8" => "Firma 8"
+    ];
+
     /**
      * Display a listing of the phones.
      *
@@ -57,19 +68,9 @@ class CustomerContactController extends Controller
      */
     public function create()
     {
-        $customers = [
-            "1" => "Firma 1",
-            "2" => "Firma 2",
-            "3" => "Firma 3",
-            "4" => "Firma 4",
-            "5" => "Firma 5",
-            "6" => "Firma 6",
-            "7" => "Firma 7",
-            "8" => "Firma 8"
-        ];
         $data = [
             'contactTypes' => CustomerContact::getContactTypes(),
-            'customers' => $customers
+            'customers' => $this->customers
         ];
         return view('contacts.create')->with($data);
     }
@@ -91,7 +92,7 @@ class CustomerContactController extends Controller
      * @param  \App\Models\CustomerContact  $customerContact
      * @return \Illuminate\Http\Response
      */
-    public function show(CustomerContact $customerContact)
+    public function show(CustomerContact $contact)
     {
         //
     }
@@ -102,9 +103,15 @@ class CustomerContactController extends Controller
      * @param  \App\Models\CustomerContact  $customerContact
      * @return \Illuminate\Http\Response
      */
-    public function edit(CustomerContact $customerContact)
+    public function edit(CustomerContact $contact)
     {
-        //
+        $data = [
+            'contact' => $contact,
+            'customers' => $this->customers,
+            'contactTypes' => CustomerContact::getContactTypes()
+        ];
+
+        return view('contacts.edit')->with($data);
     }
 
     /**
@@ -114,7 +121,7 @@ class CustomerContactController extends Controller
      * @param  \App\Models\CustomerContact  $customerContact
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateCustomerContactRequest $request, CustomerContact $customerContact)
+    public function update(UpdateCustomerContactRequest $request, CustomerContact $contact)
     {
         //
     }
@@ -125,7 +132,7 @@ class CustomerContactController extends Controller
      * @param  \App\Models\CustomerContact  $customerContact
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CustomerContact $customerContact)
+    public function destroy(CustomerContact $contact)
     {
         //
     }
