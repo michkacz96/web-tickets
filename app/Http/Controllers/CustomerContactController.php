@@ -9,13 +9,45 @@ use App\Http\Requests\UpdateCustomerContactRequest;
 class CustomerContactController extends Controller
 {
     /**
+     * Display a listing of the phones.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function phones()
+    {
+        $data = array(
+            'contacts' => CustomerContact::where('type', 'P')->paginate() 
+        );
+        
+        return view('contacts.index')->with($data);
+    }
+
+    /**
+     * Display a listing of the emails.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function emails()
+    {
+        $data = array(
+            'contacts' => CustomerContact::where('type', 'E')->paginate() 
+        );
+        
+        return view('contacts.index')->with($data);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $data = array(
+            'contacts' => CustomerContact::paginate() 
+        );
+        
+        return view('contacts.index')->with($data);
     }
 
     /**
@@ -25,7 +57,21 @@ class CustomerContactController extends Controller
      */
     public function create()
     {
-        //
+        $customers = [
+            "1" => "Firma 1",
+            "2" => "Firma 2",
+            "3" => "Firma 3",
+            "4" => "Firma 4",
+            "5" => "Firma 5",
+            "6" => "Firma 6",
+            "7" => "Firma 7",
+            "8" => "Firma 8"
+        ];
+        $data = [
+            'contactTypes' => CustomerContact::getContactTypes(),
+            'customers' => $customers
+        ];
+        return view('contacts.create')->with($data);
     }
 
     /**

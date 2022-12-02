@@ -44,6 +44,26 @@
                         </a>
                     </div>
                 </li>
+                <!-- Contacts -->
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{__('Contacts')}}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{route('contacts.phones')}}">
+                            {{ __('Phone contacts') }}
+                        </a>
+                        <a class="dropdown-item" href="{{route('contacts.emails')}}">
+                            {{ __('Email contacts') }}
+                        </a>
+                        <a class="dropdown-item" href="{{route('contacts.create')}}">
+                            {{ __('Add new contact') }}
+                        </a>
+                        <a class="dropdown-item" href="{{route('contacts.deleted')}}">
+                            {{ __('Deleted contacts') }}
+                        </a>
+                    </div>
+                </li>
             </ul>
 
             <!-- Right Side Of Navbar -->
