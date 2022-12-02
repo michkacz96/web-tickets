@@ -26,6 +26,14 @@
                     <strong class="text-danger">{{ $message }}</strong>    
                 @enderror
             </div>
+
+            <div class="form-group col-lg-6">
+                {!! Form::label('tags', __('Tags')) !!}
+                {!! Form::text('tags', old('tags'), $attributes=['class' => 'form-control', 'placeholder' => __('Tags')]) !!}
+                @error('tags')
+                    <strong class="text-danger">{{ $message }}</strong>    
+                @enderror
+            </div>
         </div>
 
         <div class="my-3">

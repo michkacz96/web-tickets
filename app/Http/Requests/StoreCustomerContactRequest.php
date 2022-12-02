@@ -46,7 +46,8 @@ class StoreCustomerContactRequest extends FormRequest
         $this->merge([
             'type' => $this->type,
             'customer_id' => $this->customer,
-            'value' => $this->value
+            'value' => $this->value,
+            'tags' => $this->tags
         ]);
     }
 }
