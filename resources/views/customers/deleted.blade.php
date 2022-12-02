@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="d-flex justify-content-start">
-        <a href="{{route('customers.index')}}" class="btn btn-primary btn-block">{{__('Go to list of customers')}}</a>
-    </div>
+    <ul class="nav mb-3">
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('customers.index')}}">{{__('Go to list of customers')}}</a>
+        </li>
+    </ul>
+    <hr>
     
-    <hr class="my-3">
     @if(count((is_countable($customers)?$customers:[])))
     <table class="table table-hover">
         <thead>

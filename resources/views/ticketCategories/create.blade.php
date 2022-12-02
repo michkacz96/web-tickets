@@ -1,9 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="{{url()->previous()}}" class="btn btn-primary btn-block">{{__('Go back')}}</a>
-
-    <hr class="my-3">
+    <ul class="nav mb-3">
+        <li class="nav-item">
+            <a class="nav-link" href="{{url()->previous()}}">{{__('Go back')}}</a>
+        </li>
+    </ul>
+    <hr>
     
     {!! Form::open(['url' => route('ticket-categories.store'), 'action' => 'App\Http\Controllers\TicketCategoryController@store', 'method' => 'POST']) !!}
         <div class="form-group">

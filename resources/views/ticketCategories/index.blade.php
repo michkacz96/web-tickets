@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="d-flex justify-content-start">
-        <a href="{{route('ticket-categories.create')}}" class="btn btn-primary btn-block">{{__('Create new ticket category')}}</a>
-    </div>
-    
-    <hr class="my-3">
+    <ul class="nav mb-3">
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('ticket-categories.create')}}">{{__('Create new ticket category')}}</a>
+        </li>
+    </ul>
+    <hr>
+
     @if(count((is_countable($ticketCategories)?$ticketCategories:[])))
         <table class="table table-hover">
             <thead>
