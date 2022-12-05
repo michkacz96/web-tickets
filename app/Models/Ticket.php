@@ -39,10 +39,10 @@ class Ticket extends Model
     }
 
     public function customer(){
-        return $this->belongsTo(Customer::class);
+        return $this->belongsTo(Customer::class)->withTrashed();
     }
 
     public function ticketCategory(){
-        return $this->belongsTo(TicketCategory::class);
+        return $this->belongsTo(TicketCategory::class)->withTrashed();
     }
 }
