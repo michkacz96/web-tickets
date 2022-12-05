@@ -52,5 +52,13 @@
     "Deleted contacts": "Usunięte kontakty",
     "Value": "Wartość",
     "Add contact information": "Dodaj dane kontaktowe",
-    "Customer": "Kontrahent"
+    "Customer": "Kontrahent",
+    "Create date": "Data utworzenia",
+    "Title": "Tytuł",
+    "Category": "Kategoria",
+    "Status": "Status",
+    "New": "Nowy",
+    "Assigned": "Przypisany",
+    "In progress": "W trakcie",
+    "Closed": "Zamknięty"
 }
