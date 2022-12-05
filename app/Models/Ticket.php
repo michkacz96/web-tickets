@@ -9,6 +9,15 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Ticket extends Model
 {
     use HasFactory, SoftDeletes;
+    
+    protected $fillable = [
+        'title',
+        'description',
+        'status',
+        'customer_id',
+        'ticket_category_id',
+        'user_id'
+    ];
 
     private static $statuses = [
         'N' => 'New',

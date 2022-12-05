@@ -46,7 +46,9 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request)
     {
-        //
+        Ticket::create($request->all());
+
+        return redirect(route('tickets.index'));
     }
 
     /**

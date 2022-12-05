@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreTicketRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class StoreTicketRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,22 @@ class StoreTicketRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title' => ['required', 'max:100'],
+            'description' => ['required', 'max:512'],
+            'status' => Rule::in(['N', 'A', 'I', 'C']),
+            'customer_id' => ['required', 'integer'],
+            'ticket_category_id' => ['required', 'integer']
         ];
+    }
+
+    protected function prepareForValidation(){
+        $this->merge([
+            'title' => $this->title,
+            'description' => $this->description,
+            'status' => 'N', //create always new ticket
+            'customer_id' => $this->customer,
+            'ticket_category_id' => $this->category,
+            'user_id' => auth()->user()->id
+        ]);
     }
 }
