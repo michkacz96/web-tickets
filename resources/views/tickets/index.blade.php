@@ -12,16 +12,24 @@
         <table class="table table-hover">
             <thead>
                 <tr>
-                  <th scope="col">{{__('Name')}}</th>
-                  <th scope="col">{{__('Description')}}</th>
-                  <th scope="col"></th>
+                    <th scope="col">{{__('Create date')}}</th>
+                    <th scope="col">{{__('Title')}}</th>
+                    <th scope="col">{{__('Description')}}</th>
+                    <th scope="col">{{__('Category')}}</th>
+                    <th scope="col">{{__('Customer')}}</th>
+                    <th scope="col">{{__('Status')}}</th>
+                    <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
                 @foreach($tickets as $ticket)
                     <tr>
-                        <td>{{$ticket->name}}</td>
+                        <td>{{$ticket->created_at}}</td>
+                        <td>{{$ticket->title}}</td>
                         <td>{{$ticket->description}}</td>
+                        <td>{{$ticket->ticketCategory->name}}</td>
+                        <td>{{$ticket->customer->name}}</td>
+                        <td>{{$ticket->getStatus()}}</td>
                         <td class="d-flex flex-row justify-content-evenly">
                             <a href={{url('/tickets/'.$ticket->id.'/edit')}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Edit')}}</a>
                             {!! Form::open(['action' => ['App\Http\Controllers\TicketController@destroy', $ticket->id], 'method' => 'POST', 'class' => 'float-end']) !!}

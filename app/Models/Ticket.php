@@ -21,6 +21,10 @@ class Ticket extends Model
         return self::$statuses;
     }
 
+    public function getStatus(){
+        return self::$statuses[$this->status];
+    }
+
     public function user(){
         return $this->belongsTo(User::class);
     }
