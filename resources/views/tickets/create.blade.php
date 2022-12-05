@@ -8,7 +8,7 @@
     </ul>
     <hr>
     
-    {!! Form::open(['url' => route('ticket-categories.store'), 'action' => 'App\Http\Controllers\TicketCategoryController@store', 'method' => 'POST']) !!}
+    {!! Form::open(['url' => route('tickets.store'), 'action' => 'App\Http\Controllers\TicketController@store', 'method' => 'POST']) !!}
         <div class="form-group">
             {!! Form::label('name', __('Name')) !!}
             {!! Form::text('name', old('name'), $attributes=['class' => 'form-control', 'placeholder' => __('Name')]) !!}
