@@ -15,7 +15,11 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        $data = [
+            'tickets' => Ticket::paginate()
+        ];
+
+        return view('tickets.index')->with($data);
     }
 
     /**
