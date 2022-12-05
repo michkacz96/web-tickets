@@ -36,6 +36,12 @@ Route::get('/contacts/emails', [App\Http\Controllers\CustomerContactController::
 Route::get('/contacts/phones', [App\Http\Controllers\CustomerContactController::class, 'phones'])->name('contacts.phones');
 Route::resource('/contacts', App\Http\Controllers\CustomerContactController::class);
 
+//tickets
+Route::delete('/tickets/{ticket}/force-delete', [App\Http\Controllers\TicketController::class, 'forceDelete'])->name('tickets.force-delete');
+Route::post('/tickets/{ticket}/restore', [App\Http\Controllers\TicketController::class, 'restore'])->name('tickets.restore');
+Route::get('/tickets/deleted', [App\Http\Controllers\TicketController::class, 'deleted'])->name('tickets.deleted');
+Route::resource('/tickets', App\Http\Controllers\TicketController::class);
+
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
