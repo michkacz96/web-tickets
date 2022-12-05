@@ -3,7 +3,7 @@
 @section('content')
     <ul class="nav mb-3">
         <li class="nav-item">
-            <a class="nav-link" href="{{route('ticket-categories.create')}}">{{__('Create new ticket category')}}</a>
+            <a class="nav-link" href="{{route('tickets.create')}}">{{__('Create new ticket')}}</a>
         </li>
     </ul>
     <hr>
