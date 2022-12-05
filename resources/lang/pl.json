@@ -60,5 +60,9 @@
     "New": "Nowy",
     "Assigned": "Przypisany",
     "In progress": "W trakcie",
-    "Closed": "Zamknięty"
+    "Closed": "Zamknięty",
+    "Create new ticket": "Nowe zgłoszenie",
+    "Tickets": "Zgłoszenia",
+    "List of tickets": "Lista zgłoszeń",
+    "Deleted tickets": "Usunięte zgłoszenia"
 }
