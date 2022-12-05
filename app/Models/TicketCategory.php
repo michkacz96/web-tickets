@@ -15,6 +15,19 @@ class TicketCategory extends Model
         'description'
     ];
 
+    public static function getCategories(){
+        $tab = [];
+        $categoies = self::all();
+
+        foreach($categoies as $category){
+            $tab += [
+                $category->id => $category->name
+            ];
+        }
+
+        return $tab;
+    }
+
     public function tickets(){
         return $this->hasMany(Ticket::class);
     }

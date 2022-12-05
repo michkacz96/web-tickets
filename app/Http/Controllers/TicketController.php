@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Models\Customer;
+use App\Models\TicketCategory;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
 
@@ -29,7 +31,11 @@ class TicketController extends Controller
      */
     public function create()
     {
-        return view('tickets.create');
+        $data = [
+            'customers' => Customer::getCustomers(),
+            'categories' => TicketCategory::getCategories()
+        ];
+        return view('tickets.create')->with($data);
     }
 
     /**

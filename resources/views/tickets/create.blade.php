@@ -10,22 +10,36 @@
     
     {!! Form::open(['url' => route('tickets.store'), 'action' => 'App\Http\Controllers\TicketController@store', 'method' => 'POST']) !!}
         <div class="form-group">
-            {!! Form::label('name', __('Name')) !!}
-            {!! Form::text('name', old('name'), $attributes=['class' => 'form-control', 'placeholder' => __('Name')]) !!}
-            @error('name')
+            {!! Form::label('title', __('Title')) !!}
+            {!! Form::text('title', old('title'), $attributes=['class' => 'form-control', 'placeholder' => __('Title')]) !!}
+            @error('title')
                 <strong class="text-danger">{{ $message }}</strong>    
             @enderror
         </div>
         <div class="form-group">
             {!! Form::label('description', __('Description')) !!}
-            {!! Form::text('description', old('description'), $attributes=['class' => 'form-control', 'placeholder' => __('Description')]) !!}
+            {!! Form::textarea('description', old('description'), $attributes=['class' => 'form-control', 'placeholder' => __('Description')]) !!}
             @error('description')
+                <strong class="text-danger">{{ $message }}</strong>    
+            @enderror
+        </div>
+        <div class="form-group">
+            {!! Form::label('customer', __('Customer')) !!}
+            {!! Form::select('customer', $customers, old('customer'), $attributes=['class' => 'form-select']) !!}
+            @error('customer')
+                <strong class="text-danger">{{ $message }}</strong>    
+            @enderror
+        </div>
+        <div class="form-group">
+            {!! Form::label('category', __('Category')) !!}
+            {!! Form::select('category', $categories, old('category'), $attributes=['class' => 'form-select']) !!}
+            @error('category')
                 <strong class="text-danger">{{ $message }}</strong>    
             @enderror
         </div>
         
         <div class="my-3">
-            {{Form::submit(__('Create new ticket category'), ['class' => 'btn btn-primary float-end'])}}
+            {{Form::submit(__('Create new ticket'), ['class' => 'btn btn-success float-end'])}}
         </div>
     {!! Form::close() !!}
 @endsection
