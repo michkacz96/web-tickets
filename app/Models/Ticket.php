@@ -17,7 +17,7 @@ class Ticket extends Model
         'C' => 'Closed'
     ];
 
-    public ststic function getStatuses(){
+    public static function getStatuses(){
         return self::$statuses;
     }
 }
