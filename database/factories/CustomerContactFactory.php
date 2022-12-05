@@ -13,8 +13,19 @@ class CustomerContactFactory extends Factory
      */
     public function definition()
     {
+        $create = $this->faker->numberBetween(0, 50000);
+        if($create < 24999){
+            $type = 'E';
+            $value = $this->faker->safeEmail();
+        }else{
+            $type = 'P';
+            $value = $this->faker->e164PhoneNumber();
+        }
+
         return [
-            //
+            'customer_id' => $this->faker->numberBetween(1, 10),
+            'type' => $type,
+            'value' => $value
         ];
     }
 }

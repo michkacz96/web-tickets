@@ -14,7 +14,8 @@ class TicketCategoryFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => $this->faker->sentence(2),
+            'description' => $this->faker->paragraph($this->faker->numberBetween(1,5))
         ];
     }
 }
