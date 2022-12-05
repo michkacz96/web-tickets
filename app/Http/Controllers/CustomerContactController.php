@@ -27,7 +27,9 @@ class CustomerContactController extends Controller
     public function phones()
     {
         $data = array(
-            'contacts' => CustomerContact::where('type', 'P')->paginate() 
+            'contacts' => CustomerContact::whereHas('customer', function($query){
+                $query->select();
+            })->where('type', 'P')->paginate()
         );
         
         return view('contacts.index')->with($data);
@@ -41,7 +43,9 @@ class CustomerContactController extends Controller
     public function emails()
     {
         $data = array(
-            'contacts' => CustomerContact::where('type', 'E')->paginate() 
+            'contacts' => CustomerContact::whereHas('customer', function($query){
+                $query->select();
+            })->where('type', 'E')->paginate() 
         );
         
         return view('contacts.index')->with($data);
@@ -55,7 +59,7 @@ class CustomerContactController extends Controller
     public function index()
     {
         $data = array(
-            'contacts' => CustomerContact::paginate() 
+            'contacts' => CustomerContact::paginate()
         );
         
         return view('contacts.index')->with($data);
