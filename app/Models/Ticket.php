@@ -20,4 +20,16 @@ class Ticket extends Model
     public static function getStatuses(){
         return self::$statuses;
     }
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public function customer(){
+        return $this->belongsTo(Customer::class);
+    }
+
+    public function ticketCategory(){
+        return $this->belongsTo(TicketCategory::class);
+    }
 }

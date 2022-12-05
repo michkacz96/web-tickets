@@ -80,4 +80,8 @@ class Customer extends Model
     public function customerContacts(){
         return $this->hasMany(CustomerContact::class);
     }
+
+    public function tickets(){
+        return $this->hasMany(Ticket::class);
+    }
 }
