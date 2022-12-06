@@ -18,7 +18,7 @@
                     <th scope="col">{{__('Category')}}</th>
                     <th scope="col">{{__('Customer')}}</th>
                     <th scope="col">{{__('Status')}}</th>
-                    <th scope="col">{{__('Date delete')}}</th>
+                    <th scope="col">{{__('Date deleted')}}</th>
                     <th scope="col"></th>
                 </tr>
               </thead>
