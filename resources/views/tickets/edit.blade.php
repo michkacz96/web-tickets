@@ -7,18 +7,32 @@
     </ul>
     <hr>
     
-    {!! Form::open(['action' => ['App\Http\Controllers\TicketCategoryController@update', $ticketCategory->id], 'method' => 'POST']) !!}
+    {!! Form::open(['action' => ['App\Http\Controllers\TicketController@update', $ticket->id], 'method' => 'POST']) !!}
         <div class="form-group">
-            {!! Form::label('name', __('Name')) !!}
-            {!! Form::text('name', $ticketCategory->name, $attributes=['class' => 'form-control', 'placeholder' => __('Name')]) !!}
-            @error('name')
+            {!! Form::label('title', __('Title')) !!}
+            {!! Form::text('title', $ticket->title, $attributes=['class' => 'form-control', 'placeholder' => __('Title')]) !!}
+            @error('title')
                 <strong class="text-danger">{{ $message }}</strong>    
             @enderror
         </div>
         <div class="form-group">
             {!! Form::label('description', __('Description')) !!}
-            {!! Form::text('description', $ticketCategory->description, $attributes=['class' => 'form-control', 'placeholder' => __('Description')]) !!}
+            {!! Form::textarea('description', $ticket->description, $attributes=['rows' => '2', 'class' => 'form-control', 'placeholder' => __('Description')]) !!}
             @error('description')
+                <strong class="text-danger">{{ $message }}</strong>    
+            @enderror
+        </div>
+        <div class="form-group">
+            {!! Form::label('customer', __('Customer')) !!}
+            {!! Form::select('customer', $customers, $ticket->customer_id, $attributes=['class' => 'form-select']) !!}
+            @error('customer')
+                <strong class="text-danger">{{ $message }}</strong>    
+            @enderror
+        </div>
+        <div class="form-group">
+            {!! Form::label('category', __('Category')) !!}
+            {!! Form::select('category', $categories, $ticket->ticket_category_id, $attributes=['class' => 'form-select']) !!}
+            @error('category')
                 <strong class="text-danger">{{ $message }}</strong>    
             @enderror
         </div>

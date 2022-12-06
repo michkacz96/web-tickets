@@ -11,6 +11,16 @@ use App\Http\Requests\UpdateTicketRequest;
 class TicketController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -70,7 +80,13 @@ class TicketController extends Controller
      */
     public function edit(Ticket $ticket)
     {
-        //
+        $data = [
+            'customers' => Customer::getCustomers(),
+            'categories' => TicketCategory::getCategories(),
+            'ticket' => $ticket
+        ];
+
+        return view('tickets.edit')->with($data);
     }
 
     /**
@@ -82,7 +98,9 @@ class TicketController extends Controller
      */
     public function update(UpdateTicketRequest $request, Ticket $ticket)
     {
-        //
+        $ticket->update($request->all());
+
+        return redirect(route('tickets.index'));
     }
 
     /**
