@@ -41,7 +41,7 @@
             <label for="date">{{__('Due date')}}</label>
             <div class="input-group">
                 <div class="input-group-text">
-                    <input id="use_date" class="form-check-input mt-0" name="use_date" type="checkbox" aria-label="Checkbox for following text input">
+                    <input id="use_date" class="form-check-input mt-0" name="use_date" type="checkbox" aria-label="Checkbox for following text input" {{(old('use_date') ? 'checked' : '')}}>
                     <label for="use_date" class="ms-2">{{__('Due date')}}</label>
                 </div>
                 <input id="date" class="form-control" name="date" type="date" value="{{(old('date') ? old('date') : date('Y-m-d'))}}">
