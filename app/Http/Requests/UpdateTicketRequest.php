@@ -29,16 +29,27 @@ class UpdateTicketRequest extends FormRequest
             'description' => ['required', 'max:512'],
             'status' => Rule::in(['N', 'A', 'I', 'C']),
             'customer_id' => ['required', 'integer'],
-            'ticket_category_id' => ['required', 'integer']
+            'ticket_category_id' => ['required', 'integer'],
+            'due_date' => ['date_format:Y-m-d H:i:s']
         ];
     }
 
     protected function prepareForValidation(){
-        $this->merge([
-            'title' => $this->title,
-            'description' => $this->description,
-            'customer_id' => $this->customer,
-            'ticket_category_id' => $this->category
-        ]);
+        if(isset($this->use_date)){
+            $this->merge([
+                'title' => $this->title,
+                'description' => $this->description,
+                'customer_id' => $this->customer,
+                'ticket_category_id' => $this->category,
+                'due_date' => date('Y-m-d H:i:s', strtotime($this->date.$this->time))
+            ]);
+        } else{
+            $this->merge([
+                'title' => $this->title,
+                'description' => $this->description,
+                'customer_id' => $this->customer,
+                'user_id' => auth()->user()->id
+            ]);
+        }
     }
 }
