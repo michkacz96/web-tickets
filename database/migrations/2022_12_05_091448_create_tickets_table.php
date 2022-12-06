@@ -18,7 +18,7 @@ class CreateTicketsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->string('title');
-            $table->string('description');
+            $table->string('description', 512);
             $table->string('status', 1)->default('N');
             $table->foreignIdFor(App\Models\User::class)->references('id')->on('users');
             $table->foreignIdFor(App\Models\Customer::class)->nullable()->references('id')->on('customers');
