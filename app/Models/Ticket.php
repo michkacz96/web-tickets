@@ -16,14 +16,16 @@ class Ticket extends Model
         'status',
         'customer_id',
         'ticket_category_id',
-        'user_id'
+        'user_id',
+        'due_date'
     ];
 
     private static $statuses = [
         'N' => 'New',
         'A' => 'Assigned',
         'I' => 'In progress',
-        'C' => 'Closed'
+        'C' => 'Closed',
+        'O' => 'Overdue'
     ];
 
     public static function getStatuses(){

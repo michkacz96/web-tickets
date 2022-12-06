@@ -24,6 +24,7 @@ class CreateTicketsTable extends Migration
             $table->foreignIdFor(App\Models\Customer::class)->nullable()->references('id')->on('customers')->nullOnDelete();;
             $table->foreignIdFor(App\Models\TicketCategory::class)->nullable()->references('id')->on('ticket_categories')->nullOnDelete();
             $table->timestamp('closed_at')->nullable();
+            $table->datetime('due_date')->nullable();
         });
     }
 

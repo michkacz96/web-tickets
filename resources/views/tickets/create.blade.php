@@ -37,6 +37,23 @@
                 <strong class="text-danger">{{ $message }}</strong>    
             @enderror
         </div>
+        <div class="form-group">
+            <label for="date">{{__('Due date')}}</label>
+            <div class="input-group">
+                <div class="input-group-text">
+                    <input id="use_date" class="form-check-input mt-0" name="use_date" type="checkbox" aria-label="Checkbox for following text input">
+                    <label for="use_date" class="ms-2">{{__('Due date')}}</label>
+                </div>
+                <input id="date" class="form-control" name="date" type="date" value="{{(old('date') ? old('date') : date('Y-m-d'))}}">
+                @error('date')
+                    <strong class="text-danger">{{ $message }}</strong>    
+                @enderror
+                <input id="time" class="form-control" name="time" type="time" value="{{(old('time') ? old('time') : date('H:i'))}}">
+                @error('time')
+                    <strong class="text-danger">{{ $message }}</strong>    
+                @enderror
+            </div>
+        </div>
         
         <div class="my-3">
             {{Form::submit(__('Create new ticket'), ['class' => 'btn btn-success float-end'])}}
