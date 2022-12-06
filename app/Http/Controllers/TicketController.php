@@ -19,7 +19,7 @@ class TicketController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -111,6 +111,45 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        $ticket->delete();
+
+        return redirect()->back();
+    }
+
+    /**
+     * Display a listing of the deleted resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function deleted(){
+        $data = array(
+            'tickets' => Ticket::onlyTrashed()->paginate()
+        );
+        return view('tickets.deleted')->with($data);
+    }
+
+    /**
+     * Restore deleted resource.
+     *
+     * @param  \App\Models\TicketCategory  $ticketCategory
+     * @return \Illuminate\Http\Response
+     */
+    public function restore($id)
+    {
+        $ticket = Ticket::withTrashed()->find($id)->restore();
+        return redirect(route('tickets.deleted'));
+    }
+
+    /**
+     * Remove the specified resource from storage premanently.
+     *
+     * @param  \App\Models\TicketCategory  $ticketCategory
+     * @return \Illuminate\Http\Response
+     */
+    public function forceDelete($id)
+    {
+        $ticket = Ticket::withTrashed()->find($id)->forceDelete();
+
+        return redirect()->back();
     }
 }
