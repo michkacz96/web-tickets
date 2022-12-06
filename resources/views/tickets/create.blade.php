@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
             {!! Form::label('description', __('Description')) !!}
-            {!! Form::textarea('description', old('description'), $attributes=['class' => 'form-control', 'placeholder' => __('Description')]) !!}
+            {!! Form::textarea('description', old('description'), $attributes=['rows' => '2', 'class' => 'form-control', 'placeholder' => __('Description')]) !!}
             @error('description')
                 <strong class="text-danger">{{ $message }}</strong>    
             @enderror
