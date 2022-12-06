@@ -28,6 +28,10 @@ class TicketCategory extends Model
         return $tab;
     }
 
+    public function name(){
+        return 'dssd';
+    }
+
     public function tickets(){
         return $this->hasMany(Ticket::class);
     }

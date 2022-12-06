@@ -27,8 +27,16 @@
                         <td>{{$ticket->created_at}}</td>
                         <td>{{$ticket->title}}</td>
                         <td>{{$ticket->description}}</td>
-                        <td>{{$ticket->ticketCategory->name}}</td>
-                        <td>{{$ticket->customer->name}}</td>
+                        @if($ticket->ticketCategory != NULL)
+                            <td>{{$ticket->ticketCategory->name}}</td>
+                        @else
+                            <td>{{__('Record deleted')}}</td>
+                        @endif
+                        @if($ticket->customer != NULL)
+                            <td>{{$ticket->customer->name}}</td>
+                        @else
+                            <td>{{__('Record deleted')}}</td>
+                        @endif
                         <td>{{__($ticket->getStatus())}}</td>
                         <td class="d-flex flex-row justify-content-evenly">
                             <a href={{url('/tickets/'.$ticket->id.'/edit')}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Edit')}}</a>
