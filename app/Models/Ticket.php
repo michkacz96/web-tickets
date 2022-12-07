@@ -52,6 +52,14 @@ class Ticket extends Model
         }
     }
 
+    public function getColorTable(){
+        if($this->overdue){
+            return 'class=table-danger';
+        } elseif($this->status == 'C'){
+            return 'class=table-success';
+        }
+    }
+
     public function user(){
         return $this->belongsTo(User::class);
     }

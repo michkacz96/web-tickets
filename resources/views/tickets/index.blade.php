@@ -23,7 +23,7 @@
               </thead>
               <tbody>
                 @foreach($tickets as $ticket)
-                    <tr>
+                    <tr {{$ticket->getColorTable()}}>
                         <td>{{$ticket->created_at}}</td>
                         <td>{{$ticket->title}}</td>
                         <td>{{$ticket->description}}</td>
