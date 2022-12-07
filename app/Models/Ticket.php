@@ -16,7 +16,8 @@ class Ticket extends Model
         'status',
         'customer_id',
         'ticket_category_id',
-        'user_id',
+        'created_by',
+        'assigned_to',
         'due_date'
     ];
 
@@ -64,8 +65,24 @@ class Ticket extends Model
         }
     }
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function createdBy(){
+        return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+
+    public function assignedTo(){
+        return $this->belongsTo(User::class, 'assigned_to', 'id');
+    }
+
+    public function getNameCreatedBy(){
+        if($this->createdBy){
+            return $this->createdBy->name;
+        }
+    }
+
+    public function getNameAssignedTo(){
+        if($this->assignedTo){
+            return $this->assignedTo->name;
+        }
     }
 
     public function customer(){

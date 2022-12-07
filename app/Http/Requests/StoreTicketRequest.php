@@ -42,7 +42,7 @@ class StoreTicketRequest extends FormRequest
                 'status' => 'N', //create always new ticket
                 'customer_id' => $this->customer,
                 'ticket_category_id' => $this->category,
-                'user_id' => auth()->user()->id,
+                'created_by' => auth()->user()->id,
                 'due_date' => date('Y-m-d H:i:s', strtotime($this->date.$this->time))
             ]);
         } else{
@@ -52,7 +52,7 @@ class StoreTicketRequest extends FormRequest
                 'status' => 'N', //create always new ticket
                 'customer_id' => $this->customer,
                 'ticket_category_id' => $this->category,
-                'user_id' => auth()->user()->id
+                'created_by' => auth()->user()->id
             ]);
         }
         

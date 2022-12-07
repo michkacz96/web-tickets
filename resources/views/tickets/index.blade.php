@@ -18,6 +18,8 @@
                     <th scope="col">{{__('Category')}}</th>
                     <th scope="col">{{__('Customer')}}</th>
                     <th scope="col">{{__('Status')}}</th>
+                    <th scope="col">{{__('Created by')}}</th>
+                    <th scope="col">{{__('Assigned to')}}</th>
                     <th scope="col"></th>
                 </tr>
               </thead>
@@ -38,6 +40,8 @@
                             <td>{{__('Record deleted')}}</td>
                         @endif
                         <td>{{__($ticket->getStatus())}}</td>
+                        <td>{{$ticket->getNameCreatedBy()}}</td>
+                        <td>{{$ticket->getNameAssignedTo()}}</td>
                         <td class="d-flex flex-row justify-content-evenly">
                             <a href={{url('/tickets/'.$ticket->id.'/edit')}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Edit')}}</a>
                             {!! Form::open(['action' => ['App\Http\Controllers\TicketController@destroy', $ticket->id], 'method' => 'POST', 'class' => 'float-end']) !!}
