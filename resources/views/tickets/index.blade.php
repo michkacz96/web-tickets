@@ -29,16 +29,8 @@
                         <td>{{$ticket->created_at}}</td>
                         <td>{{$ticket->title}}</td>
                         <td>{{$ticket->description}}</td>
-                        @if($ticket->ticketCategory != NULL)
-                            <td>{{$ticket->ticketCategory->name}}</td>
-                        @else
-                            <td>{{__('Record deleted')}}</td>
-                        @endif
-                        @if($ticket->customer != NULL)
-                            <td>{{$ticket->customer->name}}</td>
-                        @else
-                            <td>{{__('Record deleted')}}</td>
-                        @endif
+                        <td>{{__($ticket->getNameTicketCategory())}}</td>
+                        <td>{{__($ticket->getNameCustomer())}}</td>
                         <td>{{__($ticket->getStatus())}}</td>
                         <td>{{$ticket->getNameCreatedBy()}}</td>
                         <td>{{$ticket->getNameAssignedTo()}}</td>

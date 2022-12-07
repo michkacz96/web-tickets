@@ -85,6 +85,22 @@ class Ticket extends Model
         }
     }
 
+    public function getNameTicketCategory(){
+        if($this->ticketCategory){
+            return $this->ticketCategory->name;
+        } else{
+            return 'Category deleted';
+        }
+    }
+
+    public function getNameCustomer(){
+        if($this->customer){
+            return $this->customer->name;
+        } else{
+            return 'Customer deleted';
+        }
+    }
+
     public function customer(){
         return $this->belongsTo(Customer::class)->withTrashed();
     }
