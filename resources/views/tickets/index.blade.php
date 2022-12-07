@@ -34,12 +34,13 @@
                         <td>{{__($ticket->getStatus())}}</td>
                         <td>{{$ticket->getNameCreatedBy()}}</td>
                         <td>{{$ticket->getNameAssignedTo()}}</td>
-                        <td class="d-flex flex-row justify-content-evenly">
+                        <td class="d-flex flex-row justify-content-evenly align-items-center">
                             <a href={{url('/tickets/'.$ticket->id.'/edit')}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Edit')}}</a>
                             {!! Form::open(['action' => ['App\Http\Controllers\TicketController@destroy', $ticket->id], 'method' => 'POST', 'class' => 'float-end']) !!}
                                 {{Form::hidden('_method', 'DELETE')}}
                                 {{Form::submit(__('Delete'), ['class' => 'btn btn-sm btn-danger btn-block'])}}
                             {!! Form::close() !!}
+                            
                         </td>
                     </tr>
                 @endforeach
