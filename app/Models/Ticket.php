@@ -38,11 +38,12 @@ class Ticket extends Model
     public function isOverdue(){
         $now = new DateTime("now");
 
-        if($now >= $this->due_date){
-            return true;
-        } else{
-            return false;
+        if($this->close_date !== NULL){
+            if($now >= $this->due_date){
+                return true;
+            }
         }
+        return false;
     }
 
     public function setOverdue(){
