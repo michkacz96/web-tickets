@@ -57,6 +57,10 @@ class Ticket extends Model
             return 'class=table-danger';
         } elseif($this->status == 'C'){
             return 'class=table-success';
+        } elseif($this->status == 'I'){
+            return 'class=table-warning';
+        } else{
+            return 'class=table-default';
         }
     }
 

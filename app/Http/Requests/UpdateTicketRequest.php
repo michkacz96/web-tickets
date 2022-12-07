@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
 class UpdateTicketRequest extends FormRequest
 {
@@ -27,7 +26,6 @@ class UpdateTicketRequest extends FormRequest
         return [
             'title' => ['required', 'max:100'],
             'description' => ['required', 'max:512'],
-            'status' => Rule::in(['N', 'A', 'I', 'C']),
             'customer_id' => ['required', 'integer'],
             'ticket_category_id' => ['required', 'integer'],
             'due_date' => ['date_format:Y-m-d H:i:s']
@@ -48,7 +46,7 @@ class UpdateTicketRequest extends FormRequest
                 'title' => $this->title,
                 'description' => $this->description,
                 'customer_id' => $this->customer,
-                'user_id' => auth()->user()->id
+                'ticket_category_id' => $this->category
             ]);
         }
     }
