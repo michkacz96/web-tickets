@@ -24,8 +24,7 @@ class Ticket extends Model
         'N' => 'New',
         'A' => 'Assigned',
         'I' => 'In progress',
-        'C' => 'Closed',
-        'O' => 'Overdue'
+        'C' => 'Closed'
     ];
 
     public static function getStatuses(){
@@ -34,6 +33,22 @@ class Ticket extends Model
 
     public function getStatus(){
         return self::$statuses[$this->status];
+    }
+
+    public function isOverdue(){
+        $now = new DateTime("now");
+
+        if($now >= $this->due_date){
+            return true;
+        } else{
+            return false;
+        }
+    }
+
+    public function setOverdue(){
+        if($this->isOverdue()){
+            $this->overdue = 1;
+        }
     }
 
     public function user(){
