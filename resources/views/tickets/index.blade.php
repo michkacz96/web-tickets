@@ -26,7 +26,7 @@
               <tbody>
                 @foreach($tickets as $ticket)
                     <tr {{$ticket->getColorTable()}}>
-                        <td>{{$ticket->created_at}}</td>
+                        <td>{{auth()->user()->convertDateTime($ticket->created_at)}}</td>
                         <td>{{$ticket->title}}</td>
                         <td>{{$ticket->description}}</td>
                         <td>{{__($ticket->getNameTicketCategory())}}</td>
