@@ -40,14 +40,16 @@
                     @endif
                     <td>{{__($ticket->getStatus())}}</td>
                     <td>{{$ticket->deleted_at}}</td>
-                    <td class="d-flex flex-row justify-content-evenly">
-                        {!! Form::open(['action' => ['App\Http\Controllers\TicketController@restore', $ticket->id], 'method' => 'POST', 'class' => 'float-end']) !!}
-                            {{Form::submit(__('Restore'), ['class' => 'btn btn-sm btn-secondary btn-block'])}}
-                        {!! Form::close() !!}
-                        {!! Form::open(['action' => ['App\Http\Controllers\TicketController@forceDelete', $ticket->id], 'method' => 'POST', 'class' => 'float-end']) !!}
-                            {{Form::hidden('_method', 'DELETE')}}
-                            {{Form::submit(__('Delete forever'), ['class' => 'btn btn-sm btn-danger btn-block'])}}
-                        {!! Form::close() !!}
+                    <td>
+                        <div class="d-flex flex-row justify-content-end">
+                            {!! Form::open(['action' => ['App\Http\Controllers\TicketController@restore', $ticket->id], 'method' => 'POST', 'class' => 'mx-1']) !!}
+                                {{Form::submit(__('Restore'), ['class' => 'btn btn-sm btn-secondary'])}}
+                            {!! Form::close() !!}
+                            {!! Form::open(['action' => ['App\Http\Controllers\TicketController@forceDelete', $ticket->id], 'method' => 'POST', 'class' => 'mx-1']) !!}
+                                {{Form::hidden('_method', 'DELETE')}}
+                                {{Form::submit(__('Delete forever'), ['class' => 'btn btn-sm btn-danger'])}}
+                            {!! Form::close() !!}
+                        </div>
                     </td>
                 </tr>
                 @endforeach

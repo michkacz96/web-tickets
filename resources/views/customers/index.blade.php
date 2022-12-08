@@ -26,13 +26,16 @@
                         <td>{{$customer->getFullAddress()}}</td>
                         <td>{{$customer->tin_ssn}}</td>
                         <td>{{__($customer->getCustomerType())}}</td>
-                        <td class="d-flex flex-row justify-content-evenly">
-                            <a href={{url('/customers/'.$customer->id)}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Details')}}</a>
-                            <a href={{url('/customers/'.$customer->id.'/edit')}} class="btn btn-sm btn-secondary float-end mx-1 btn-block">{{__('Edit')}}</a>
-                            {!! Form::open(['action' => ['App\Http\Controllers\CustomerController@destroy', $customer->id], 'method' => 'POST', 'class' => 'float-end']) !!}
-                                {{Form::hidden('_method', 'DELETE')}}
-                                {{Form::submit(__('Delete'), ['class' => 'btn btn-sm btn-danger btn-block'])}}
-                            {!! Form::close() !!}
+                        <td>
+                            <div class="d-flex flex-row justify-content-end">
+                                <a href={{url('/customers/'.$customer->id)}} class="btn btn-sm btn-secondary mx-1">{{__('Details')}}</a>
+                                <a href={{url('/customers/'.$customer->id.'/edit')}} class="btn btn-sm btn-secondary mx-1">{{__('Edit')}}</a>
+                                {!! Form::open(['action' => ['App\Http\Controllers\CustomerController@destroy', $customer->id], 'method' => 'POST', 'class' => 'mx-1']) !!}
+                                    {{Form::hidden('_method', 'DELETE')}}
+                                    {{Form::submit(__('Delete'), ['class' => 'btn btn-sm btn-danger'])}}
+                                {!! Form::close() !!}
+                            </div>
+                           
                         </td>
                     </tr>
                 @endforeach
