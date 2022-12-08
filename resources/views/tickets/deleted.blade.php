@@ -3,7 +3,7 @@
 @section('content')
     <ul class="nav mb-3">
         <li class="nav-item">
-            <a class="nav-link" href="{{route('tickets.index')}}">{{__('Go to list of ticket')}}</a>
+            <a class="nav-link" href="{{route('tickets.index')}}">{{__('Go to list of tickets')}}</a>
         </li>
     </ul>
     <hr>

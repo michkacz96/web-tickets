@@ -43,7 +43,7 @@
     "Phone number": "Numer telefonu",
     "Tags": "Etykiety",
     "Add new customer": "Dodaj nowego kontrahenta",
-    "Go to list of customers": "Przjdź do listy kontrahnetów",
+    "Go to list of customers": "Przejdź do listy kontrahnetów",
     "Type": "Rodzaj",
     "Contacts": "Kontakty",
     "Phone contacts": "Telefony",
@@ -69,5 +69,8 @@
     "Created by": "Dodane przez",
     "Assigned to": "Przypisane do",
     "Category deleted": "Kategoria usunięta",
-    "Customer deleted": "Kontrahent usunięty"
+    "Customer deleted": "Kontrahent usunięty",
+    "Go to list of phones": "Przejdź do listy telefonów",
+    "Go to list of emails": "Przejdź do listy emaili",
+    "Go to list of tickets": "Przejdź do listy zgłoszeń"
 }
