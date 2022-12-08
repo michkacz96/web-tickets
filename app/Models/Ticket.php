@@ -105,6 +105,10 @@ class Ticket extends Model
         return auth()->user()->convertDateTimeToLocal($this->created_at);
     }
 
+    public function getLocalDeletedAt(){
+        return auth()->user()->convertDateTimeToLocal($this->deleted_at);
+    }
+
     public function customer(){
         return $this->belongsTo(Customer::class)->withTrashed();
     }

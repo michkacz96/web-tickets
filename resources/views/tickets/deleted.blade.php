@@ -25,21 +25,13 @@
               <tbody>
                 @foreach($tickets as $ticket)
                 <tr>
-                    <td>{{$ticket->created_at}}</td>
+                    <td>{{$ticket->getLocalCreatedAt()}}</td>
                     <td>{{$ticket->title}}</td>
                     <td>{{$ticket->description}}</td>
-                    @if($ticket->ticketCategory != NULL)
-                        <td>{{$ticket->ticketCategory->name}}</td>
-                    @else
-                        <td>{{__('Record deleted')}}</td>
-                    @endif
-                    @if($ticket->customer != NULL)
-                        <td>{{$ticket->customer->name}}</td>
-                    @else
-                        <td>{{__('Record deleted')}}</td>
-                    @endif
+                    <td>{{__($ticket->getNameTicketCategory())}}</td>
+                    <td>{{__($ticket->getNameCustomer())}}</td>
                     <td>{{__($ticket->getStatus())}}</td>
-                    <td>{{$ticket->deleted_at}}</td>
+                    <td>{{$ticket->getLocalDeletedAt()}}</td>
                     <td>
                         <div class="d-flex flex-row justify-content-end">
                             {!! Form::open(['action' => ['App\Http\Controllers\TicketController@restore', $ticket->id], 'method' => 'POST', 'class' => 'mx-1']) !!}
