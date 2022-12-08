@@ -28,7 +28,7 @@
                     <td>{{$contact->customer->name}}</td>
                     <td>{{$contact->value}}</td>
                     <td>{{$contact->tags}}</td>
-                    <td>{{$contact->deleted_at}}</td>
+                    <td>{{$contact->getLocalDeletedAt()}}</td>
                     <td>
                         <div class="d-flex flex-row justify-content-end">
                             {!! Form::open(['action' => ['App\Http\Controllers\CustomerContactController@restore', $contact->id], 'method' => 'POST', 'class' => 'mx-1']) !!}

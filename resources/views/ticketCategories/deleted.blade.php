@@ -23,7 +23,7 @@
                     <tr>
                         <td>{{$ticketCategory->name}}</td>
                         <td>{{$ticketCategory->description}}</td>
-                        <td>{{$ticketCategory->deleted_at}}</td>
+                        <td>{{$ticketCategory->getLocalDeletedAt()}}</td>
                         <td>
                             <div class="d-flex flex-row justify-content-end">
                                 {!! Form::open(['action' => ['App\Http\Controllers\TicketCategoryController@restore', $ticketCategory->id], 'method' => 'POST', 'class' => 'mx-1']) !!}

@@ -15,6 +15,19 @@ class TicketCategory extends Model
         'description'
     ];
 
+    public function getLocalCreatedAt(){
+        if($this->created_at){
+            return auth()->user()->convertDateTimeToLocal($this->created_at);
+        }
+        
+    }
+
+    public function getLocalDeletedAt(){
+        if($this->deleted_at){
+            return auth()->user()->convertDateTimeToLocal($this->deleted_at);
+        }
+    }
+
     public static function getCategories(){
         $tab = [];
         $categoies = self::all();

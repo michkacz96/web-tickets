@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Ticket extends Model
 {
     use HasFactory, SoftDeletes;
+
+    private $dateGetter;
     
     protected $fillable = [
         'title',
@@ -27,6 +29,19 @@ class Ticket extends Model
         'I' => 'In progress',
         'C' => 'Closed'
     ];
+
+    public function getLocalCreatedAt(){
+        if($this->created_at){
+            return auth()->user()->convertDateTimeToLocal($this->created_at);
+        }
+        
+    }
+
+    public function getLocalDeletedAt(){
+        if($this->deleted_at){
+            return auth()->user()->convertDateTimeToLocal($this->deleted_at);
+        }
+    }
 
     public static function getStatuses(){
         return self::$statuses;
@@ -101,13 +116,6 @@ class Ticket extends Model
         }
     }
 
-    public function getLocalCreatedAt(){
-        return auth()->user()->convertDateTimeToLocal($this->created_at);
-    }
-
-    public function getLocalDeletedAt(){
-        return auth()->user()->convertDateTimeToLocal($this->deleted_at);
-    }
 
     public function customer(){
         return $this->belongsTo(Customer::class)->withTrashed();

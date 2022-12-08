@@ -27,7 +27,7 @@
                     <td>{{$customer->getFullAddress()}}</td>
                     <td>{{$customer->tin_ssn}}</td>
                     <td>{{__($customer->getCustomerType())}}</td>
-                    <td>{{$customer->deleted_at}}</td>
+                    <td>{{$customer->getLocalDeletedAt()}}</td>
                     <td>
                         <div class="d-flex flex-row justify-content-end">
                             {!! Form::open(['action' => ['App\Http\Controllers\CustomerController@restore', $customer->id], 'method' => 'POST', 'class' => 'mx-1']) !!}
