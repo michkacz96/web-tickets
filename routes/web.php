@@ -40,6 +40,8 @@ Route::resource('/contacts', App\Http\Controllers\CustomerContactController::cla
 Route::delete('/tickets/{ticket}/force-delete', [App\Http\Controllers\TicketController::class, 'forceDelete'])->name('tickets.force-delete');
 Route::post('/tickets/{ticket}/restore', [App\Http\Controllers\TicketController::class, 'restore'])->name('tickets.restore');
 Route::get('/tickets/deleted', [App\Http\Controllers\TicketController::class, 'deleted'])->name('tickets.deleted');
+Route::get('/tickets/{ticket}/assign', [App\Http\Controllers\TicketController::class, 'showAssignTo'])->name('tickets.assign');
+Route::patch('/tickets/{ticket}/assign', [App\Http\Controllers\TicketController::class, 'assignTo'])->name('tickets.assign');
 Route::resource('/tickets', App\Http\Controllers\TicketController::class);
 
 Auth::routes();

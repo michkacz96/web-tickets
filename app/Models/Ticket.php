@@ -97,6 +97,8 @@ class Ticket extends Model
     public function getNameAssignedTo(){
         if($this->assignedTo){
             return $this->assignedTo->name;
+        } else{
+            return '<a href="'.route('tickets.assign', ['ticket'=> $this->id]).'" class="text-primary">'.__('Assign ticket').'</a>';
         }
     }
 
@@ -114,6 +116,21 @@ class Ticket extends Model
         } else{
             return 'Customer deleted';
         }
+    }
+
+    public function assignTo($user_id){
+        try{
+            if($this->status = 'N'){
+                $this->status = 'A';
+                $this->assigned_to = $user_id;
+                $this->save();
+            } else{
+                throw new Exception('The ticket\'s status is diefrent than NEW');
+            }
+        } catch(Exception $e){
+            return $e;
+        }
+        
     }
 
 

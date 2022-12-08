@@ -33,9 +33,10 @@
                         <td>{{__($ticket->getNameCustomer())}}</td>
                         <td>{{__($ticket->getStatus())}}</td>
                         <td>{{$ticket->getNameCreatedBy()}}</td>
-                        <td>{{$ticket->getNameAssignedTo()}}</td>
+                        <td>{!! $ticket->getNameAssignedTo() !!}</td>
                         <td>
                             <div class="d-flex flex-row">
+                                <a href={{url('/tickets/'.$ticket->id)}} class="btn btn-sm btn-secondary mx-1">{{__('Details')}}</a>
                                 <a href={{url('/tickets/'.$ticket->id.'/edit')}} class="btn btn-sm btn-secondary mx-1">{{__('Edit')}}</a>
                                 {!! Form::open(['action' => ['App\Http\Controllers\TicketController@destroy', $ticket->id], 'method' => 'POST']) !!}
                                     {{Form::hidden('_method', 'DELETE')}}

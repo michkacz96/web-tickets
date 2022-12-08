@@ -7,6 +7,7 @@ use App\Models\Customer;
 use App\Models\TicketCategory;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
+use Illuminate\Http\Request;
 
 class TicketController extends Controller
 {
@@ -69,7 +70,10 @@ class TicketController extends Controller
      */
     public function show(Ticket $ticket)
     {
-        //
+        $data = [
+            'ticket' => $ticket
+        ];
+        return view('tickets.show')->with($data);
     }
 
     /**
@@ -151,5 +155,19 @@ class TicketController extends Controller
         $ticket = Ticket::withTrashed()->find($id)->forceDelete();
 
         return redirect()->back();
+    }
+
+    public function showAssignTo(Ticket $ticket){
+        $data = [
+            'ticket' => $ticket,
+            'users' => auth()->user()->getUsers()
+        ];
+        return view('tickets.assign')->with($data);
+    }
+
+    public function assignTo(Request $request, Ticket $ticket){
+        $ticket->assignTo($request->input('assign_to'));
+
+        return redirect(route('tickets.index'));
     }
 }

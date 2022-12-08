@@ -47,6 +47,19 @@ class User extends Authenticatable
         return $this->hasMany(Ticket::class);
     }
 
+    public function getUsers(){
+        $users = self::all();
+        $users_tab = [];
+
+        foreach($users as $user){
+            $users_tab += [
+                $user->id => $user->name." (".$this->email.")"
+            ];
+        }
+
+        return $users_tab;
+    }
+
     public function convertDateTimeToLocal($dateTime){
         $dbdateUTC = Carbon::createFromFormat('Y-m-d H:i:s', $dateTime, 'UTC');
         $localtime = $dbdateUTC->setTimezone($this->timezone);
