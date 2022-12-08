@@ -101,6 +101,10 @@ class Ticket extends Model
         }
     }
 
+    public function getLocalCreatedAt(){
+        return auth()->user()->convertDateTimeToLocal($this->created_at);
+    }
+
     public function customer(){
         return $this->belongsTo(Customer::class)->withTrashed();
     }

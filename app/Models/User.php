@@ -47,9 +47,15 @@ class User extends Authenticatable
         return $this->hasMany(Ticket::class);
     }
 
-    public function convertDateTime($dateTime){
+    public function convertDateTimeToLocal($dateTime){
         $dbdateUTC = Carbon::createFromFormat('Y-m-d H:i:s', $dateTime, 'UTC');
         $localtime = $dbdateUTC->setTimezone($this->timezone);
         return $localtime;
+    }
+
+    public function convertDateTimeToUtc($dateTime){
+        $localtime = Carbon::createFromFormat('Y-m-d H:i:s', $dateTime, $this->timezone);
+        $dbdateUTC = $dbdateUTC->setTimezone('UTC');
+        return $dbdateUTC;
     }
 }
