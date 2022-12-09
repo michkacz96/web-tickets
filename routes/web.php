@@ -42,6 +42,7 @@ Route::post('/tickets/{ticket}/restore', [App\Http\Controllers\TicketController:
 Route::get('/tickets/deleted', [App\Http\Controllers\TicketController::class, 'deleted'])->name('tickets.deleted');
 Route::get('/tickets/{ticket}/assign', [App\Http\Controllers\TicketController::class, 'showAssignTo'])->name('tickets.assign');
 Route::patch('/tickets/{ticket}/assign', [App\Http\Controllers\TicketController::class, 'assignTo'])->name('tickets.assign');
+Route::patch('/tickets/{ticket}/accept', [App\Http\Controllers\TicketController::class, 'accept'])->name('tickets.accept');
 Route::resource('/tickets', App\Http\Controllers\TicketController::class);
 
 Auth::routes();

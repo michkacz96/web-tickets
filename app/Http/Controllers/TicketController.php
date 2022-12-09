@@ -166,8 +166,18 @@ class TicketController extends Controller
     }
 
     public function assignTo(Request $request, Ticket $ticket){
-        $ticket->assignTo($request->input('assign_to'));
+        if($ticket->assignTo($request->input('assign_to'))){
+            return redirect()->route('tickets.index');
+        } else{
+            return redirect()->back()->with('ststus', 'Already assigned');
+        }
+    }
 
-        return redirect(route('tickets.index'));
+    public function accept(Ticket $ticket){
+        if($ticket->accept()){
+            return redirect()->back();
+        } else{
+            return redirect()->back()->with('ststus', 'Already accepted');
+        }
     }
 }

@@ -33,7 +33,15 @@
                         <td>{{__($ticket->getNameCustomer())}}</td>
                         <td>{{__($ticket->getStatus())}}</td>
                         <td>{{$ticket->getNameCreatedBy()}}</td>
-                        <td>{!! $ticket->getNameAssignedTo() !!}</td>
+                        <td>
+                            {!! $ticket->getNameAssignedTo() !!}
+                            @if($ticket->isAssigned())
+                                {!! Form::open(['action' => ['App\Http\Controllers\TicketController@accept', $ticket->id], 'method' => 'POST']) !!}
+                                    {{Form::hidden('_method', 'PATCH')}}
+                                    {{Form::submit(__('Accept'), ['class' => 'btn btn-link'])}}
+                                {!! Form::close() !!}
+                            @endif
+                        </td>
                         <td>
                             <div class="d-flex flex-row">
                                 <a href={{url('/tickets/'.$ticket->id)}} class="btn btn-sm btn-secondary mx-1">{{__('Details')}}</a>

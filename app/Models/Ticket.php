@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Exception;
 
 class Ticket extends Model
 {
@@ -95,10 +96,36 @@ class Ticket extends Model
     }
 
     public function getNameAssignedTo(){
-        if($this->assignedTo){
-            return $this->assignedTo->name;
+        if($this->status == 'N' && !$this->assignedTo){
+            if($this->created_by == auth()->user()->id){
+                return '<a href="'.route('tickets.assign', ['ticket'=> $this->id]).'" class="text-primary">'.__('Assign ticket').'</a>';
+            }
         } else{
-            return '<a href="'.route('tickets.assign', ['ticket'=> $this->id]).'" class="text-primary">'.__('Assign ticket').'</a>';
+            return $this->assignedTo->name;
+        } 
+    }
+
+    public function isAssigned(){
+        if($this->status == 'A' && $this->assignedTo){
+            if($this->assigned_to == auth()->user()->id){
+                return true;
+            } else{
+                return false;
+            }
+        } else{
+            return false;
+        }
+        
+    }
+
+    public function accept(){
+        if($this->status == 'A'){
+            $this->status = 'I';
+            $this->save();
+
+            return true;
+        } else{
+            return false;
         }
     }
 
@@ -119,18 +146,15 @@ class Ticket extends Model
     }
 
     public function assignTo($user_id){
-        try{
-            if($this->status = 'N'){
-                $this->status = 'A';
-                $this->assigned_to = $user_id;
-                $this->save();
-            } else{
-                throw new Exception('The ticket\'s status is diefrent than NEW');
-            }
-        } catch(Exception $e){
-            return $e;
+        if($this->status == 'N'){
+            $this->status = 'A';
+            $this->assigned_to = $user_id;
+            $this->save();
+            
+            return true;
+        } else{
+            return false;
         }
-        
     }
 
 
