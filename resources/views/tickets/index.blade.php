@@ -40,6 +40,10 @@
                                     {{Form::hidden('_method', 'PATCH')}}
                                     {{Form::submit(__('Accept'), ['class' => 'btn btn-link'])}}
                                 {!! Form::close() !!}
+                            @elseif($ticket->isOwner() && $ticket->status == 'N')
+                                <a href={{route('tickets.assign', ['ticket'=> $ticket->id])}} class="d-block">{{__('Assign ticket')}}</a>
+                            @elseif($ticket->isOwner())
+                                <a href={{route('tickets.assign', ['ticket'=> $ticket->id])}} class="d-block">{{__('Edit assigment')}}</a>
                             @endif
                         </td>
                         <td>

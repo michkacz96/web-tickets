@@ -138,6 +138,18 @@ class Ticket extends Model
     }
 
     /**
+     * Returns true when ticket is owned by currently signed in user
+     * @return boolean
+     */
+    public function isOwner(){
+        if($this->created_by == auth()->user()->id){
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Returns true if currently signed in user is assigned to a task
      * @return boolean
      */
