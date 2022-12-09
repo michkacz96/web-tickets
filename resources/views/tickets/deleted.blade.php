@@ -30,7 +30,7 @@
                     <td>{{$ticket->description}}</td>
                     <td>{{__($ticket->getNameTicketCategory())}}</td>
                     <td>{{__($ticket->getNameCustomer())}}</td>
-                    <td>{{__($ticket->getStatus())}}</td>
+                    <td>{{__($ticket->getStatusName())}}</td>
                     <td>{{$ticket->getLocalDeletedAt()}}</td>
                     <td>
                         <div class="d-flex flex-row justify-content-end">

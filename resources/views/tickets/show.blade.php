@@ -30,7 +30,7 @@
                 </tr>
                 <tr {{$ticket->getColorTable()}}>
                     <th scope="col">{{__('Status')}}</th>
-                    <td>{{__($ticket->getStatus())}}</td>
+                    <td>{{__($ticket->getStatusName())}}</td>
                 </tr>
                 <tr>
                     <th scope="col">{{__('Created by')}}</th>
