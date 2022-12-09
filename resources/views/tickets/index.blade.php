@@ -9,7 +9,7 @@
     <hr>
 
     @if(count((is_countable($tickets)?$tickets:[])))
-        <table class="table table-hover">
+        <table class="table table-hover text-center">
             <thead>
                 <tr>
                     <th scope="col">{{__('Create date')}}</th>
@@ -35,15 +35,23 @@
                         <td>{{$ticket->getNameCreatedBy()}}</td>
                         <td>
                             {!! $ticket->getNameAssignedTo() !!}
-                            @if($ticket->isAssignedToUser())
-                                {!! Form::open(['action' => ['App\Http\Controllers\TicketController@accept', $ticket->id], 'method' => 'POST']) !!}
-                                    {{Form::hidden('_method', 'PATCH')}}
-                                    {{Form::submit(__('Accept'), ['class' => 'btn btn-link'])}}
-                                {!! Form::close() !!}
-                            @elseif($ticket->isOwner() && $ticket->status == 'N')
-                                <a href={{route('tickets.assign', ['ticket'=> $ticket->id])}} class="d-block">{{__('Assign ticket')}}</a>
+                            @if($ticket->isOwner() && $ticket->status == 'N')
+                                <a href={{route('tickets.assign', ['ticket'=> $ticket->id])}} class="d-block btn-link">{{__('Assign ticket')}}</a>
                             @elseif($ticket->isOwner())
-                                <a href={{route('tickets.assign', ['ticket'=> $ticket->id])}} class="d-block">{{__('Edit assigment')}}</a>
+                                <a href={{route('tickets.assign', ['ticket'=> $ticket->id])}} class="d-block btn-link mb-1">{{__('Edit assigment')}}</a>
+                            @endif
+                            @if($ticket->isAssignedToUser())
+                                <div>
+                                    {!! Form::open(['action' => ['App\Http\Controllers\TicketController@accept', $ticket->id], 'method' => 'POST', 'class' => 'd-inline']) !!}
+                                        {{Form::hidden('_method', 'PATCH')}}
+                                        {{Form::submit(__('Accept'), ['class' => 'btn btn-sm btn-success'])}}
+                                    {!! Form::close() !!}
+
+                                    {!! Form::open(['action' => ['App\Http\Controllers\TicketController@refuse', $ticket->id], 'method' => 'POST', 'class' => 'd-inline']) !!}
+                                        {{Form::hidden('_method', 'PATCH')}}
+                                        {{Form::submit(__('Refuse'), ['class' => 'btn btn-sm btn-danger'])}}
+                                    {!! Form::close() !!}
+                                </div>
                             @endif
                         </td>
                         <td>
