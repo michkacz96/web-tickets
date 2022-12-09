@@ -20,8 +20,8 @@ class CreateTicketsTable extends Migration
             $table->string('title');
             $table->string('description', 512);
             $table->string('status', 1)->default('N');
-            $table->foreignId('created_by')->nullable()->references('id')->on('users')->nullOnDelete();
-            $table->foreignId('assigned_to')->nullable()->references('id')->on('users')->nullOnDelete();
+            $table->foreignId('created_by')->references('id')->on('users');
+            $table->foreignId('assigned_to')->nullable()->references('id')->on('users');
             $table->foreignIdFor(App\Models\Customer::class)->nullable()->references('id')->on('customers')->nullOnDelete();
             $table->foreignIdFor(App\Models\TicketCategory::class)->nullable()->references('id')->on('ticket_categories')->nullOnDelete();
             $table->timestamp('closed_at')->nullable();
