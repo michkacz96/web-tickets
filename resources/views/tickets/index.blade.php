@@ -29,13 +29,13 @@
                         <td>{{$ticket->getLocalCreatedAt()}}</td>
                         <td>{{$ticket->title}}</td>
                         <td>{{$ticket->description}}</td>
-                        <td>{{__($ticket->getNameTicketCategory())}}</td>
-                        <td>{{__($ticket->getNameCustomer())}}</td>
+                        <td>{{$ticket->getNameTicketCategory()}}</td>
+                        <td>{{$ticket->getNameCustomer()}}</td>
                         <td>{{__($ticket->getStatusName())}}</td>
                         <td>{{$ticket->getNameCreatedBy()}}</td>
                         <td>
                             {!! $ticket->getNameAssignedTo() !!}
-                            @if($ticket->isAssigned())
+                            @if($ticket->isAssignedToUser())
                                 {!! Form::open(['action' => ['App\Http\Controllers\TicketController@accept', $ticket->id], 'method' => 'POST']) !!}
                                     {{Form::hidden('_method', 'PATCH')}}
                                     {{Form::submit(__('Accept'), ['class' => 'btn btn-link'])}}
