@@ -39,8 +39,8 @@
                 <tr>
                     <th scope="col">{{__('Assigned to')}}</th>
                     <td>
-                        {!! $ticket->getNameAssignedTo() !!}
-                        @if($ticket->isAssigned())
+                        {{$ticket->getNameAssignedTo()}}
+                        @if($ticket->isAssignedToUser())
                             {!! Form::open(['action' => ['App\Http\Controllers\TicketController@accept', $ticket->id], 'method' => 'POST']) !!}
                                 {{Form::hidden('_method', 'PATCH')}}
                                 {{Form::submit(__('Accept'), ['class' => 'btn btn-link'])}}
