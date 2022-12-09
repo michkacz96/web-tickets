@@ -10,7 +10,7 @@
     {!! Form::open(['action' => ['App\Http\Controllers\TicketController@showAssignTo', $ticket->id], 'method' => 'POST']) !!}
         <div class="form-group">
             {!! Form::label('assign_to', __('Assign ticket')) !!}
-            {!! Form::select('assign_to', $users, null, $attributes=['class' => 'form-select']) !!}
+            {!! Form::select('assign_to', $users, ($ticket->assigned_to) ? $ticket->assigned_to : old('assign_to'), $attributes=['class' => 'form-select']) !!}
             @error('assign_to')
                 <strong class="text-danger">{{ $message }}</strong>    
             @enderror
