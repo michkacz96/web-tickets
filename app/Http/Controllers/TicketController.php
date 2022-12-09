@@ -174,7 +174,15 @@ class TicketController extends Controller
     }
 
     public function accept(Ticket $ticket){
-        if($ticket->accept()){
+        if($ticket->acceptTicket()){
+            return redirect()->back();
+        } else{
+            return redirect()->back()->with('ststus', 'Already accepted');
+        }
+    }
+
+    public function refuse(Ticket $ticket){
+        if($ticket->refuseTicket()){
             return redirect()->back();
         } else{
             return redirect()->back()->with('ststus', 'Already accepted');
