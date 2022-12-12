@@ -44,6 +44,7 @@ Route::get('/tickets/{ticket}/assign', [App\Http\Controllers\TicketController::c
 Route::patch('/tickets/{ticket}/assign', [App\Http\Controllers\TicketController::class, 'assignTo'])->name('tickets.assign');
 Route::patch('/tickets/{ticket}/accept', [App\Http\Controllers\TicketController::class, 'accept'])->name('tickets.accept');
 Route::patch('/tickets/{ticket}/refuse', [App\Http\Controllers\TicketController::class, 'refuse'])->name('tickets.refuse');
+Route::patch('/tickets/{ticket}/close', [App\Http\Controllers\TicketController::class, 'close'])->name('tickets.close');
 Route::resource('/tickets', App\Http\Controllers\TicketController::class);
 
 Auth::routes();
