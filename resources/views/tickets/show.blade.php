@@ -7,7 +7,9 @@
         </li>
     </ul>
     <hr>
-        <table class="table table-striped table-hover">
+    <div class="row">
+        <div class="col-lg-6">
+            <table class="table table-striped table-hover">
                 <tr>
                     <th scope="col">{{__('Create date')}}</th>
                     <td>{{$ticket->getLocalCreatedAt()}}</td>
@@ -48,5 +50,8 @@
                         @endif
                     </td>
                 </tr>
-        </table>
+            </table>
+        </div>
+        <div class="col-lg-6"></div>
+    </div>
 @endsection
