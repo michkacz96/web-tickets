@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-wide')
 
 @section('content')
     <ul class="nav mb-3">
@@ -37,10 +37,10 @@
                             {!! $ticket->getNameAssignedTo() !!}
                             @if($ticket->isOwner() && $ticket->status == 'N')
                                 <a href={{route('tickets.assign', ['ticket'=> $ticket->id])}} class="d-block btn-link">{{__('Assign ticket')}}</a>
-                            @elseif($ticket->isOwner())
+                            @elseif($ticket->isOwner() && $ticket->status != 'C')
                                 <a href={{route('tickets.assign', ['ticket'=> $ticket->id])}} class="d-block btn-link mb-1">{{__('Edit assigment')}}</a>
                             @endif
-                            @if($ticket->isAssignedToUser())
+                            @if($ticket->isAssignedToUser() && $ticket->status == 'A')
                                 <div>
                                     {!! Form::open(['action' => ['App\Http\Controllers\TicketController@accept', $ticket->id], 'method' => 'POST', 'class' => 'd-inline']) !!}
                                         {{Form::hidden('_method', 'PATCH')}}
@@ -53,11 +53,22 @@
                                     {!! Form::close() !!}
                                 </div>
                             @endif
+                            
                         </td>
                         <td>
                             <div class="d-flex flex-row">
+                                @if($ticket->isAssignedToUser() && $ticket->status == 'I')
+                                    <div>
+                                        {!! Form::open(['action' => ['App\Http\Controllers\TicketController@close', $ticket->id], 'method' => 'POST', 'class' => 'd-inline']) !!}
+                                            {{Form::hidden('_method', 'PATCH')}}
+                                            {{Form::submit(__('Close'), ['class' => 'btn btn-sm btn-success'])}}
+                                        {!! Form::close() !!}
+                                    </div>
+                                @endif
                                 <a href={{url('/tickets/'.$ticket->id)}} class="btn btn-sm btn-secondary mx-1">{{__('Details')}}</a>
-                                <a href={{url('/tickets/'.$ticket->id.'/edit')}} class="btn btn-sm btn-secondary mx-1">{{__('Edit')}}</a>
+                                @if($ticket->status != 'C')
+                                    <a href={{url('/tickets/'.$ticket->id.'/edit')}} class="btn btn-sm btn-secondary mx-1">{{__('Edit')}}</a>
+                                @endif
                                 {!! Form::open(['action' => ['App\Http\Controllers\TicketController@destroy', $ticket->id], 'method' => 'POST']) !!}
                                     {{Form::hidden('_method', 'DELETE')}}
                                     {{Form::submit(__('Delete'), ['class' => 'btn btn-sm btn-danger mx-1'])}}
