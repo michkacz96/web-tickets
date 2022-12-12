@@ -75,5 +75,7 @@
     "Go to list of tickets": "Przejdź do listy zgłoszeń",
     "Assign ticket": "Przypisz zgłoszenie",
     "Accept": "Przyjmij",
+    "Refuse": "Odmów",
+    "Close": "Zamknij",
     "Edit assigment": "Zmień przypisanego użytkownika"
 }
