@@ -154,7 +154,7 @@ class Ticket extends Model
      * @return boolean
      */
     public function isAssignedToUser(){
-        if($this->assigned_to == auth()->user()->id && $this->status == 'A'){
+        if($this->assigned_to == auth()->user()->id){
             return true;
         } else{
             return false;
@@ -190,7 +190,7 @@ class Ticket extends Model
      */
     public function closeTicket(){
         $this->status = 'C';
-        $this->cloased_at = date('Y-m-d H:i:s');
+        $this->closed_at = date('Y-m-d H:i:s');
         $this->save();
 
         return true;
