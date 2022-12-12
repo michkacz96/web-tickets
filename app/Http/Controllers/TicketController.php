@@ -188,4 +188,12 @@ class TicketController extends Controller
             return redirect()->back()->with('ststus', 'Already accepted');
         }
     }
+
+    public function close(Ticket $ticket){
+        if($ticket->closeTicket()){
+            return redirect()->back();
+        } else{
+            return redirect()->back()->with('ststus', 'Already accepted');
+        }
+    }
 }
