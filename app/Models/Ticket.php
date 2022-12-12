@@ -185,6 +185,18 @@ class Ticket extends Model
     }
 
     /**
+     * returns true when ticket is closed by assigned user. Changes status to 'Closed' and added timestamp to cloased_at
+     * @return boolean
+     */
+    public function closeTicket(){
+        $this->status = 'C';
+        $this->cloased_at = date('Y-m-d H:i:s');
+        $this->save();
+
+        return true;
+    }
+
+    /**
      * Returns name of ticket's category. When category is deleted from database returns string 'Category deleted'
      * @return string
      */
