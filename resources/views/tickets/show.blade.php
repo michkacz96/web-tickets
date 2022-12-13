@@ -42,16 +42,51 @@
                     <th scope="col">{{__('Assigned to')}}</th>
                     <td>
                         {{$ticket->getNameAssignedTo()}}
-                        @if($ticket->isAssignedToUser())
-                            {!! Form::open(['action' => ['App\Http\Controllers\TicketController@accept', $ticket->id], 'method' => 'POST']) !!}
-                                {{Form::hidden('_method', 'PATCH')}}
-                                {{Form::submit(__('Accept'), ['class' => 'btn btn-link'])}}
-                            {!! Form::close() !!}
+                        @if($ticket->isOwner() && $ticket->status == 'N')
+                            <a href={{route('tickets.assign', ['ticket'=> $ticket->id])}} class="d-block btn-link">{{__('Assign ticket')}}</a>
+                        @elseif($ticket->isOwner() && $ticket->status != 'C')
+                            <a href={{route('tickets.assign', ['ticket'=> $ticket->id])}} class="d-block btn-link mb-1">{{__('Edit assigment')}}</a>
+                        @endif
+                        @if($ticket->isAssignedToUser() && $ticket->status == 'A')
+                            <div>
+                                {!! Form::open(['action' => ['App\Http\Controllers\TicketController@accept', $ticket->id], 'method' => 'POST', 'class' => 'd-inline']) !!}
+                                    {{Form::hidden('_method', 'PATCH')}}
+                                    {{Form::submit(__('Accept'), ['class' => 'btn btn-sm btn-success'])}}
+                                {!! Form::close() !!}
+
+                                {!! Form::open(['action' => ['App\Http\Controllers\TicketController@refuse', $ticket->id], 'method' => 'POST', 'class' => 'd-inline']) !!}
+                                    {{Form::hidden('_method', 'PATCH')}}
+                                    {{Form::submit(__('Refuse'), ['class' => 'btn btn-sm btn-danger'])}}
+                                {!! Form::close() !!}
+                            </div>
                         @endif
                     </td>
                 </tr>
             </table>
+            <a href={{route('ticket-details.create', ['ticket' => $ticket->id])}}>{{__('New detail')}}</a>
         </div>
-        <div class="col-lg-6"></div>
+        <div class="col-lg-6">
+            <div class="card">
+                <div class="card-header">
+                  Featured
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+
+              <div class="card my-2">
+                <div class="card-header">
+                  Featured
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Special title treatment</h5>
+                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+        </div><!--End of the timeline section -->
     </div>
 @endsection
