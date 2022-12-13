@@ -36,7 +36,7 @@ class StoreTicketDetailRequest extends FormRequest
         $this->merge([
             'ticket_id' => $ticket->id,
             'status' => $ticket->status,
-            'user_id' => $this->user_id,
+            'user_id' => auth()->user()->id,
             'message' => $this->message
         ]);
     }
