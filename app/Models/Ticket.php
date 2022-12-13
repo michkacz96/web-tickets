@@ -252,4 +252,12 @@ class Ticket extends Model
     public function ticketCategory(){
         return $this->belongsTo(TicketCategory::class)->withTrashed();
     }
+
+    /**
+     * Returns relation with ticket detail
+     * @return App\Models\TicketDetail
+     */
+    public function ticketDetails(){
+        return $this->hasMany(TicketDetail::class);
+    }
 }
