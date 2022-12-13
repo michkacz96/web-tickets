@@ -37,17 +37,6 @@ class TicketDetailController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\TicketDetail  $ticketDetail
-     * @return \Illuminate\Http\Response
-     */
-    public function show(TicketDetail $ticketDetail)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\TicketDetail  $ticketDetail
