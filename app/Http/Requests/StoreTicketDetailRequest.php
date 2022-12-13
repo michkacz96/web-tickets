@@ -37,7 +37,7 @@ class StoreTicketDetailRequest extends FormRequest
             'ticket_id' => $ticket->id,
             'status' => $ticket->status,
             'user_id' => auth()->user()->id,
-            'msg' => $this->message
+            'message' => $this->message
         ]);
     }
 }
