@@ -47,6 +47,9 @@ Route::patch('/tickets/{ticket}/refuse', [App\Http\Controllers\TicketController:
 Route::patch('/tickets/{ticket}/close', [App\Http\Controllers\TicketController::class, 'close'])->name('tickets.close');
 Route::resource('/tickets', App\Http\Controllers\TicketController::class);
 
+//ticket details
+Route::get('/tickets/{ticket}/create-detail', [App\Http\Controllers\TicketDetailController::class, 'create'])->name('ticket-details.create');
+
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
