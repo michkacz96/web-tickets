@@ -18,6 +18,16 @@ class TicketDetail extends Model
     ];
 
     /**
+     * Returns time and date converted from servers UTC to user's timezone of created_at property
+     * @return string created_at
+     */
+    public function getLocalCreatedAt(){
+        if($this->created_at){
+            return auth()->user()->convertDateTimeToLocal($this->created_at);
+        } 
+    }
+
+    /**
      * Returns user data of given detail
      * @return App\Models\User
      */
