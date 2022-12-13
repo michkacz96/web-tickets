@@ -31,7 +31,9 @@ class TicketDetailController extends Controller
      */
     public function store(StoreTicketDetailRequest $request)
     {
-        //
+        TicketDetail::create($request->all());
+
+        return redirect()->back();
     }
 
     /**
