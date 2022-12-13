@@ -16,6 +16,11 @@ class CreateTicketDetailsTable extends Migration
         Schema::create('ticket_details', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->softDeletes();
+            $table->foreignIdFor(App\Models\Ticket::class)->references('id')->on('tickets')->onDelete('cascade');
+            $table->string('status', 1);
+            $table->foreignIdFor(App\Models\User::class)->references('id')->on('users')->onDelete('cascade');
+            $table->string('message', 1024)->nullable();
         });
     }
 
@@ -26,6 +31,8 @@ class CreateTicketDetailsTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');    
         Schema::dropIfExists('ticket_details');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
