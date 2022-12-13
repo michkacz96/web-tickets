@@ -51,7 +51,7 @@ Route::resource('/tickets', App\Http\Controllers\TicketController::class);
 Route::get('/tickets/{ticket}/create-detail', [App\Http\Controllers\TicketDetailController::class, 'create'])->name('ticket-details.create');
 Route::post('/tickets/{ticket}/create-detail', [App\Http\Controllers\TicketDetailController::class, 'store'])->name('ticket-details.store');
 Route::get('/ticket-details/{ticket_detail}/edit', [App\Http\Controllers\TicketDetailController::class, 'edit'])->name('ticket-details.edit');
-Route::patch('/ticket-details/{ticket_detail}', [App\Http\Controllers\TicketDetailController::class, 'update'])->name('ticket-details.update');
+Route::match(['put', 'patch'], '/ticket-details/{ticket_detail}', [App\Http\Controllers\TicketDetailController::class, 'update'])->name('ticket-details.update');
 Route::delete('/ticket-details/{ticket_detail}', [App\Http\Controllers\TicketDetailController::class, 'destroy'])->name('ticket-details.destroy');
 
 Auth::routes();
