@@ -49,6 +49,7 @@ Route::resource('/tickets', App\Http\Controllers\TicketController::class);
 
 //ticket details
 Route::get('/tickets/{ticket}/create-detail', [App\Http\Controllers\TicketDetailController::class, 'create'])->name('ticket-details.create');
+Route::post('/tickets/{ticket}/create-detail', [App\Http\Controllers\TicketDetailController::class, 'store'])->name('ticket-details.store');
 
 Auth::routes();
 
