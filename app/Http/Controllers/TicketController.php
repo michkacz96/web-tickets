@@ -71,7 +71,8 @@ class TicketController extends Controller
     public function show(Ticket $ticket)
     {
         $data = [
-            'ticket' => $ticket
+            'ticket' => $ticket,
+            'messages' => $ticket->ticketDetails
         ];
         return view('tickets.show')->with($data);
     }
