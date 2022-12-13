@@ -50,6 +50,8 @@ Route::resource('/tickets', App\Http\Controllers\TicketController::class);
 //ticket details
 Route::get('/tickets/{ticket}/create-detail', [App\Http\Controllers\TicketDetailController::class, 'create'])->name('ticket-details.create');
 Route::post('/tickets/{ticket}/create-detail', [App\Http\Controllers\TicketDetailController::class, 'store'])->name('ticket-details.store');
+Route::get('/ticket-details/{ticket_detail}/edit', [App\Http\Controllers\TicketDetailController::class, 'edit'])->name('ticket-details.edit');
+Route::patch('/ticket-details/{ticket_detail}', [App\Http\Controllers\TicketDetailController::class, 'update'])->name('ticket-details.update');
 
 Auth::routes();
 
