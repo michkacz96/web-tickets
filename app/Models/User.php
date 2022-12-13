@@ -47,6 +47,10 @@ class User extends Authenticatable
         return $this->hasMany(Ticket::class);
     }
 
+    public function ticketDetails(){
+        return $this->hasMany(TicketDetail::class);
+    }
+
     public function getUsers(){
         $users = self::all();
         $users_tab = [];
