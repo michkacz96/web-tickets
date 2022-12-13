@@ -3,29 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\TicketDetail;
+use App\Models\Ticket;
 use App\Http\Requests\StoreTicketDetailRequest;
 use App\Http\Requests\UpdateTicketDetailRequest;
 
 class TicketDetailController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Ticket $ticket)
     {
-        //
+        $data = [
+            'ticket' => $ticket
+        ];
+
+        return view('ticketDetails.create')->with($data);
     }
 
     /**
