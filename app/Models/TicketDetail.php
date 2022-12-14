@@ -14,7 +14,7 @@ class TicketDetail extends Model
         'ticket_id',
         'status',
         'user_id',
-        'msg'
+        'message'
     ];
 
     /**
