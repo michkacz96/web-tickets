@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ticket;
 use App\Models\Customer;
 use App\Models\TicketCategory;
+use App\Models\TicketDetail;
 use App\Http\Requests\StoreTicketRequest;
 use App\Http\Requests\UpdateTicketRequest;
 use Illuminate\Http\Request;
@@ -57,7 +58,13 @@ class TicketController extends Controller
      */
     public function store(StoreTicketRequest $request)
     {
-        Ticket::create($request->all());
+        $ticket = Ticket::create($request->all());
+        $ticketDetail = new TicketDetail;
+        $ticketDetail->ticket_id = $ticket->id;
+        $ticketDetail->status = $ticket->status;
+        $ticketDetail->user_id = $ticket->created_by;
+        $ticketDetail->message = __('New ticket added by ').auth()->user()->name;
+        $ticketDetail->save();
 
         return redirect(route('tickets.index'));
     }
@@ -168,6 +175,12 @@ class TicketController extends Controller
 
     public function assignTo(Request $request, Ticket $ticket){
         if($ticket->assignTo($request->input('assign_to'))){
+            $ticketDetail = new TicketDetail;
+            $ticketDetail->ticket_id = $ticket->id;
+            $ticketDetail->status = $ticket->status;
+            $ticketDetail->user_id = auth()->user()->id;
+            $ticketDetail->message = __('Ticket assigned to ').$ticket->getNameAssignedTo();
+            $ticketDetail->save();
             return redirect()->route('tickets.index');
         } else{
             return redirect()->back()->with('ststus', 'Already assigned');
@@ -176,6 +189,12 @@ class TicketController extends Controller
 
     public function accept(Ticket $ticket){
         if($ticket->acceptTicket()){
+            $ticketDetail = new TicketDetail;
+            $ticketDetail->ticket_id = $ticket->id;
+            $ticketDetail->status = $ticket->status;
+            $ticketDetail->user_id = auth()->user()->id;
+            $ticketDetail->message = __('Ticket accepted by ').auth()->user()->name;
+            $ticketDetail->save();
             return redirect()->back();
         } else{
             return redirect()->back()->with('ststus', 'Already accepted');
@@ -184,6 +203,12 @@ class TicketController extends Controller
 
     public function refuse(Ticket $ticket){
         if($ticket->refuseTicket()){
+            $ticketDetail = new TicketDetail;
+            $ticketDetail->ticket_id = $ticket->id;
+            $ticketDetail->status = $ticket->status;
+            $ticketDetail->user_id = auth()->user()->id;
+            $ticketDetail->message = __('Ticket refused by ').auth()->user()->name;
+            $ticketDetail->save();
             return redirect()->back();
         } else{
             return redirect()->back()->with('ststus', 'Already accepted');
@@ -192,6 +217,12 @@ class TicketController extends Controller
 
     public function close(Ticket $ticket){
         if($ticket->closeTicket()){
+            $ticketDetail = new TicketDetail;
+            $ticketDetail->ticket_id = $ticket->id;
+            $ticketDetail->status = $ticket->status;
+            $ticketDetail->user_id = auth()->user()->id;
+            $ticketDetail->message = __('Ticket closed by ').auth()->user()->name;
+            $ticketDetail->save();
             return redirect()->back();
         } else{
             return redirect()->back()->with('ststus', 'Already accepted');
