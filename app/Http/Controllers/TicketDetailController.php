@@ -33,7 +33,7 @@ class TicketDetailController extends Controller
     {
         TicketDetail::create($request->all());
 
-        return redirect()->back();
+        return redirect()->route('tickets.show', ['ticket' => $request->ticket]);
     }
 
     /**
@@ -44,7 +44,11 @@ class TicketDetailController extends Controller
      */
     public function edit(TicketDetail $ticketDetail)
     {
-        //
+        $data = [
+            'message' => $ticketDetail
+        ];
+        
+        return view('ticketDetails.edit')->with($data);
     }
 
     /**
@@ -56,7 +60,9 @@ class TicketDetailController extends Controller
      */
     public function update(UpdateTicketDetailRequest $request, TicketDetail $ticketDetail)
     {
-        //
+        $ticketDetail->update($request->all());
+
+        return redirect()->route('tickets.show', ['ticket' => $ticketDetail->ticket]);
     }
 
     /**

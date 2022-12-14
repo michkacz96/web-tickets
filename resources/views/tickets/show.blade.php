@@ -66,27 +66,29 @@
             <a href={{route('ticket-details.create', ['ticket' => $ticket->id])}}>{{__('New detail')}}</a>
         </div>
         <div class="col-lg-6">
-            <div class="card">
-                <div class="card-header">
-                  Featured
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-
-              <div class="card my-2">
-                <div class="card-header">
-                  Featured
-                </div>
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
+            @if(count((is_countable($messages)?$messages:[])))
+                @foreach($messages as $message)
+                    <div class="card mb-2">
+                        <div class="card-header">
+                            {{$message->user->name}} {{$message->getLocalCreatedAt()}}
+                            @if($message->created_at != $message->updated_at)
+                                <span class="text-muted">{{__('Edited')}}</span>
+                            @endif
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{$message->message}}</p>
+                            <div class="d-flex flex-row-reverse">
+                                {!! Form::open(['action' => ['App\Http\Controllers\TicketDetailController@destroy', $message], 'method' => 'POST']) !!}
+                                    {{Form::hidden('_method', 'DELETE')}}
+                                    {{Form::submit(__('Delete'), ['class' => 'btn btn-link'])}}
+                                {!! Form::close() !!}
+                                <a href={{route('ticket-details.edit', ['ticket_detail' => $message])}} class="btn btn-link">Edit</a>
+                            </div>
+                            
+                        </div>
+                    </div>
+                @endforeach
+            @endif
         </div><!--End of the timeline section -->
     </div>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\TicketDetail;
 
 class UpdateTicketDetailRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class UpdateTicketDetailRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +25,19 @@ class UpdateTicketDetailRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'ticket' => ['required'],
+            'message' => ['required', 'max:1000']
         ];
+    }
+
+    protected function prepareForValidation(){
+        $ticket = TicketDetail::find($this->ticket);
+
+        $this->merge([
+            'ticket_id' => $ticket->ticket_id,
+            'status' => $ticket->status,
+            'user_id' => $ticket->user_id,
+            'message' => $this->message
+        ]);
     }
 }
