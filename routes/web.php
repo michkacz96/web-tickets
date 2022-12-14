@@ -54,6 +54,10 @@ Route::get('/ticket-details/{ticket_detail}/edit', [App\Http\Controllers\TicketD
 Route::match(['put', 'patch'], '/ticket-details/{ticket_detail}', [App\Http\Controllers\TicketDetailController::class, 'update'])->name('ticket-details.update');
 Route::delete('/ticket-details/{ticket_detail}', [App\Http\Controllers\TicketDetailController::class, 'destroy'])->name('ticket-details.destroy');
 
+//tasks
+Route::resource('/tasks', App\Http\Controllers\TaskController::class);
+
+
 Auth::routes();
 
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
