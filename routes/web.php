@@ -55,7 +55,7 @@ Route::match(['put', 'patch'], '/ticket-details/{ticket_detail}', [App\Http\Cont
 Route::delete('/ticket-details/{ticket_detail}', [App\Http\Controllers\TicketDetailController::class, 'destroy'])->name('ticket-details.destroy');
 
 //tasks
-Route::resource('/tasks', App\Http\Controllers\TaskController::class);
+Route::resource('/tasks', App\Http\Controllers\TaskListController::class);
 
 
 Auth::routes();
