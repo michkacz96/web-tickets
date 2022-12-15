@@ -75,4 +75,12 @@ class User extends Authenticatable
         $dbdateUTC = $dbdateUTC->setTimezone('UTC');
         return $dbdateUTC;
     }
+
+    /**
+     * Returns relation with task list
+     * @return App\Models\TaskList
+     */
+    public function taskLists(){
+        return $this->hasMany(TaskList::class);
+    }
 }

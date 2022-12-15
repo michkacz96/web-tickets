@@ -260,4 +260,12 @@ class Ticket extends Model
     public function ticketDetails(){
         return $this->hasMany(TicketDetail::class);
     }
+
+    /**
+     * Returns relation with task list
+     * @return App\Models\TaskList
+     */
+    public function taskLists(){
+        return $this->hasMany(TaskList::class);
+    }
 }
