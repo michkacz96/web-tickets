@@ -51,6 +51,36 @@ class Ticket extends Model
     }
 
     /**
+     * Returns array of values id => ticket name where user is assigned to. If no user given returns all tickets
+     * @param integer $user_id
+     * @return array
+     */
+    public static function getTickets($user_id = null){
+        $tab = [
+            '0' => __('Select ticket')
+        ];
+        if($user_id){
+            $tickets = self::where('assigned_to', '=', $user_id)->get();
+
+            foreach($tickets as $ticket){
+                $tab += [
+                    $ticket->id => $ticket->title
+                ];
+            }
+        } else{
+            $tickets = self::all();
+
+            foreach($tickets as $ticket){
+                $tab += [
+                    $ticket->id => $ticket->title
+                ];
+            }
+        }
+        
+        return $tab;
+    }
+
+    /**
      * Returns array of avaiable statuses
      * @return array statuses
      */
