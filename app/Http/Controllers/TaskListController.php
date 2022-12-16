@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TaskList;
+use App\Models\Ticket;
 use App\Http\Requests\StoreTaskListRequest;
 use App\Http\Requests\UpdateTaskListRequest;
 
@@ -25,7 +26,11 @@ class TaskListController extends Controller
      */
     public function create()
     {
-        return view('taskLists.create');
+        $data = [
+            'tickets' => Ticket::getTickets(auth()->user()->id)
+        ];
+
+        return view('taskLists.create')->with($data);
     }
 
     /**
