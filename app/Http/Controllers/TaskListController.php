@@ -41,7 +41,9 @@ class TaskListController extends Controller
      */
     public function store(StoreTaskListRequest $request)
     {
-        //
+        TaskList::create($request->all());
+
+        return redirect()->route('tickets.index');
     }
 
     /**
