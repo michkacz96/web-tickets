@@ -10,6 +10,13 @@ class TaskList extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $fillable = [
+        'name',
+        'private',
+        'ticket_id',
+        'user_id'
+    ];
+
     /**
      * Returns relation with user data
      * @return App\Models\User
