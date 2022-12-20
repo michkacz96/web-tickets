@@ -77,5 +77,13 @@
     "Accept": "Przyjmij",
     "Refuse": "Odmów",
     "Close": "Zamknij",
-    "Edit assigment": "Zmień przypisanego użytkownika"
+    "Edit assigment": "Zmień przypisanego użytkownika",
+    "Ticket": "Zgłoszenie",
+    "Make list private": "Lista prywatna",
+    "Make list public": "Lista publiczna",
+    "Select ticket": "Wybierz zgłoszenie",
+    "Task list name": "Nazwa listy zadań",
+    "Add task list name": "Dodaj listę zadań",
+    "Task lists": "Listy zadań",
+    "Add task": "Dodaj zadanie"
 }
