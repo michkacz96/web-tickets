@@ -25,7 +25,7 @@
         </div>
         <div class="mt-3">
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="1" id="use-task">
+                <input class="form-check-input" type="checkbox" name="useTask" value="1" id="use-task">
                 <label class="form-check-label" for="use-task">
                     {{__('Add task list to a ticket')}}
                 </label>
