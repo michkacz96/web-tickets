@@ -23,14 +23,22 @@
                 <strong class="text-danger">{{ $message }}</strong>    
             @enderror
         </div>
-
-        <div class="form-group">
-            {!! Form::label('ticket', __('Category')) !!}
-            {!! Form::select('ticket', $tickets, old('ticket'), $attributes=['class' => 'form-select']) !!}
-            @error('ticket')
-                <strong class="text-danger">{{ $message }}</strong>    
-            @enderror
+        <div class="mt-3">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="1" id="use-task">
+                <label class="form-check-label" for="use-task">
+                    {{__('Add task list to a ticket')}}
+                </label>
+            </div>          
+            <div class="form-group">
+                {!! Form::label('ticket', __('Ticket')) !!}
+                {!! Form::select('ticket', $tickets, old('ticket'), $attributes=['class' => 'form-select']) !!}
+                @error('ticket')
+                    <strong class="text-danger">{{ $message }}</strong>    
+                @enderror
+            </div>
         </div>
+        
 
         
         
