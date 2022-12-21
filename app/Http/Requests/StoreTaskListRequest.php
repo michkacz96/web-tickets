@@ -13,7 +13,7 @@ class StoreTaskListRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,36 @@ class StoreTaskListRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'private' => ['required', 'integer'],
+            'name' => ['required', 'string'],
+            'ticket_id' => ['integer'],
+            'user_id' => ['required', 'integer']
         ];
+    }
+
+    protected function prepareForValidation(){
+        $isPublic = $this->isPublic;
+        if($isPublic == 'public'){
+            $isPublic = 0;
+        } else{
+            $isPublic = 1;
+        }
+
+        if(isset($this->useTask) && $this->useTask == 1){
+            $this->merge([
+                'private' => $isPublic,
+                'name' => $this->name,
+                'ticket_id' => $this->ticket,
+                'user_id' => auth()->user()->id
+            ]);
+        } else{
+            $this->merge([
+                'private' => $isPublic,
+                'name' => $this->name,
+                'user_id' => auth()->user()->id
+            ]);
+        }
+
+        
     }
 }
